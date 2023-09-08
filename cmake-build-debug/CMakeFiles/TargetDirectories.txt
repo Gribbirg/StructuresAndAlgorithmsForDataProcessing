@@ -1,0 +1,3 @@
+C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/cmake-build-debug/CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir
+C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,5 +1,6 @@
-CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj: \
- C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\main.cpp \
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice_4.cpp.obj: \
+ C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\Practice_4.cpp \
+ C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\Practice_4.h \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -142,14 +143,7 @@ CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj: \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
- C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_3/Practice3.h \
- C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream \
- C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/codecvt.h \
- C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
- C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
- C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc \
- C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4/Practice4.h \
- C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4/PerfectlyBalancedBinaryTree.h \
+ C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\PerfectlyBalancedBinaryTree.h \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_uninitialized.h \
  C:/Users/gribk/AppData/Local/Programs/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \

@@ -24,6 +24,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_3/Main/HashTable.cpp" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Main/HashTable.cpp.obj" "gcc" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Main/HashTable.cpp.obj.d"
   "C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_3/PhoneOwnerExtended.cpp" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/PhoneOwnerExtended.cpp.obj" "gcc" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/PhoneOwnerExtended.cpp.obj.d"
   "C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_3/Practice3.cpp" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Practice3.cpp.obj" "gcc" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Practice3.cpp.obj.d"
+  "C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_4/PerfectlyBalancedBinaryTree.cpp" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj" "gcc" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj.d"
+  "C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_4/Practice4.cpp" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj" "gcc" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj.d"
   "C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/main.cpp" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj" "gcc" "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj.d"
   )
 

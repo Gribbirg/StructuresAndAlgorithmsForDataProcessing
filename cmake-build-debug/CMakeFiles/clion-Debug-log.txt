@@ -1,4 +1,4 @@
 C:\Users\gribk\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing -B C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\cmake-build-debug
--- Configuring done (0.3s)
+-- Configuring done (0.0s)
 -- Generating done (0.0s)
 -- Build files have been written to: C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/cmake-build-debug

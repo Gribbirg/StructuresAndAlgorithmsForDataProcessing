@@ -306,6 +306,34 @@ CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Exercise/Ex3_
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Exercise/Ex3_3.cpp.s"
 	C:\Users\gribk\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_3\Exercise\Ex3_3.cpp -o CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_3\Exercise\Ex3_3.cpp.s
 
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/flags.make
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj: C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_4/Practice4.cpp
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj"
+	C:\Users\gribk\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj -MF CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\Practice4.cpp.obj.d -o CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\Practice4.cpp.obj -c C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\Practice4.cpp
+
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.i"
+	C:\Users\gribk\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\Practice4.cpp > CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\Practice4.cpp.i
+
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.s"
+	C:\Users\gribk\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\Practice4.cpp -o CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\Practice4.cpp.s
+
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/flags.make
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj: C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_4/PerfectlyBalancedBinaryTree.cpp
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj"
+	C:\Users\gribk\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj -MF CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\PerfectlyBalancedBinaryTree.cpp.obj.d -o CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\PerfectlyBalancedBinaryTree.cpp.obj -c C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\PerfectlyBalancedBinaryTree.cpp
+
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.i"
+	C:\Users\gribk\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\PerfectlyBalancedBinaryTree.cpp > CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\PerfectlyBalancedBinaryTree.cpp.i
+
+CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.s"
+	C:\Users\gribk\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\Practice_4\PerfectlyBalancedBinaryTree.cpp -o CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_4\PerfectlyBalancedBinaryTree.cpp.s
+
 # Object files for target StructuresAndAlgorithmsForDataProcessing
 StructuresAndAlgorithmsForDataProcessing_OBJECTS = \
 "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj" \
@@ -324,7 +352,9 @@ StructuresAndAlgorithmsForDataProcessing_OBJECTS = \
 "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Main/BinFileWithHashTable.cpp.obj" \
 "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Main/BinFileWork.cpp.obj" \
 "CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Exercise/Ex3_2.cpp.obj" \
-"CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Exercise/Ex3_3.cpp.obj"
+"CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Exercise/Ex3_3.cpp.obj" \
+"CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj" \
+"CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj"
 
 # External object files for target StructuresAndAlgorithmsForDataProcessing
 StructuresAndAlgorithmsForDataProcessing_EXTERNAL_OBJECTS =
@@ -346,11 +376,13 @@ StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithms
 StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Main/BinFileWork.cpp.obj
 StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Exercise/Ex3_2.cpp.obj
 StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Exercise/Ex3_3.cpp.obj
+StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj
+StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj
 StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/build.make
 StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/linkLibs.rsp
 StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/objects1.rsp
 StructuresAndAlgorithmsForDataProcessing.exe: CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable StructuresAndAlgorithmsForDataProcessing.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\gribk\CLionProjects\StructuresAndAlgorithmsForDataProcessing\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable StructuresAndAlgorithmsForDataProcessing.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

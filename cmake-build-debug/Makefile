@@ -512,6 +512,54 @@ Practice_3/Practice3.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\build.make CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_3/Practice3.cpp.s
 .PHONY : Practice_3/Practice3.cpp.s
 
+Practice_4/PerfectlyBalancedBinaryTree.obj: Practice_4/PerfectlyBalancedBinaryTree.cpp.obj
+.PHONY : Practice_4/PerfectlyBalancedBinaryTree.obj
+
+# target to build an object file
+Practice_4/PerfectlyBalancedBinaryTree.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\build.make CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.obj
+.PHONY : Practice_4/PerfectlyBalancedBinaryTree.cpp.obj
+
+Practice_4/PerfectlyBalancedBinaryTree.i: Practice_4/PerfectlyBalancedBinaryTree.cpp.i
+.PHONY : Practice_4/PerfectlyBalancedBinaryTree.i
+
+# target to preprocess a source file
+Practice_4/PerfectlyBalancedBinaryTree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\build.make CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.i
+.PHONY : Practice_4/PerfectlyBalancedBinaryTree.cpp.i
+
+Practice_4/PerfectlyBalancedBinaryTree.s: Practice_4/PerfectlyBalancedBinaryTree.cpp.s
+.PHONY : Practice_4/PerfectlyBalancedBinaryTree.s
+
+# target to generate assembly for a file
+Practice_4/PerfectlyBalancedBinaryTree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\build.make CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/PerfectlyBalancedBinaryTree.cpp.s
+.PHONY : Practice_4/PerfectlyBalancedBinaryTree.cpp.s
+
+Practice_4/Practice4.obj: Practice_4/Practice4.cpp.obj
+.PHONY : Practice_4/Practice4.obj
+
+# target to build an object file
+Practice_4/Practice4.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\build.make CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.obj
+.PHONY : Practice_4/Practice4.cpp.obj
+
+Practice_4/Practice4.i: Practice_4/Practice4.cpp.i
+.PHONY : Practice_4/Practice4.i
+
+# target to preprocess a source file
+Practice_4/Practice4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\build.make CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.i
+.PHONY : Practice_4/Practice4.cpp.i
+
+Practice_4/Practice4.s: Practice_4/Practice4.cpp.s
+.PHONY : Practice_4/Practice4.s
+
+# target to generate assembly for a file
+Practice_4/Practice4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\build.make CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_4/Practice4.cpp.s
+.PHONY : Practice_4/Practice4.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -593,6 +641,12 @@ help:
 	@echo ... Practice_3/Practice3.obj
 	@echo ... Practice_3/Practice3.i
 	@echo ... Practice_3/Practice3.s
+	@echo ... Practice_4/PerfectlyBalancedBinaryTree.obj
+	@echo ... Practice_4/PerfectlyBalancedBinaryTree.i
+	@echo ... Practice_4/PerfectlyBalancedBinaryTree.s
+	@echo ... Practice_4/Practice4.obj
+	@echo ... Practice_4/Practice4.i
+	@echo ... Practice_4/Practice4.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -37,4 +37,8 @@ add_executable(StructuresAndAlgorithmsForDataProcessing main.cpp
         Practice_3/Exercise/Ex3_2.h
         Practice_3/Exercise/Ex3_3.cpp
         Practice_3/Exercise/Ex3_3.h
+        Practice_4/Practice4.cpp
+        Practice_4/Practice4.h
+        Practice_4/PerfectlyBalancedBinaryTree.cpp
+        Practice_4/PerfectlyBalancedBinaryTree.h
 )

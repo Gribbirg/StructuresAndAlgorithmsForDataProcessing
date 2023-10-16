@@ -73,6 +73,12 @@ build CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_1/Ex
   OBJECT_DIR = CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir
   OBJECT_FILE_DIR = CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_1\Ex_1
 
+build CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_3/Ex3.cpp.obj: CXX_COMPILER__StructuresAndAlgorithmsForDataProcessing_unscanned_Debug C$:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_1/Ex_3/Ex3.cpp || cmake_object_order_depends_target_StructuresAndAlgorithmsForDataProcessing
+  DEP_FILE = CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_1\Ex_3\Ex3.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir
+  OBJECT_FILE_DIR = CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir\Practice_1\Ex_3
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target StructuresAndAlgorithmsForDataProcessing
@@ -81,7 +87,7 @@ build CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_1/Ex
 #############################################
 # Link the executable StructuresAndAlgorithmsForDataProcessing.exe
 
-build StructuresAndAlgorithmsForDataProcessing.exe: CXX_EXECUTABLE_LINKER__StructuresAndAlgorithmsForDataProcessing_Debug CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Pr1.cpp.obj CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_2/Ex2.cpp.obj CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_1/Ex1.cpp.obj
+build StructuresAndAlgorithmsForDataProcessing.exe: CXX_EXECUTABLE_LINKER__StructuresAndAlgorithmsForDataProcessing_Debug CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Pr1.cpp.obj CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_2/Ex2.cpp.obj CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_1/Ex1.cpp.obj CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_3/Ex3.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\StructuresAndAlgorithmsForDataProcessing.dir

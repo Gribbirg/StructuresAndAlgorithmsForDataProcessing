@@ -5,8 +5,9 @@
 #ifndef STRUCTURESANDALGORITHMSFORDATAPROCESSING_PR1_H
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_PR1_H
 
-#include "Ex_1/Ex1.h"
-#include "Ex_2/Ex2.h"
+#include "Ex1.h"
+#include "Ex2.h"
+#include "Ex3.h"
 
 class Pr1 {
 public:

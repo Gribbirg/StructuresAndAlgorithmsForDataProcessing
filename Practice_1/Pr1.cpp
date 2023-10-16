@@ -31,6 +31,11 @@ void Pr1::start() {
                 Ex2::start();
                 break;
 
+            case 3:
+
+                Ex3::start();
+                break;
+
             default:
                 cout << "Error. Try again!" << endl;
         }

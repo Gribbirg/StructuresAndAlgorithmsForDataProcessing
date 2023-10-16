@@ -1,10 +1,11 @@
 #include <iostream>
-#include "Practice_1/Pr1.h"
+#include "Practice_3/Practice3.h"
 
 using namespace std;
 
 int main() {
-    cout << "Alg variant 3" << endl;
+    cout << "Structures and algorithms for data processing variant 3" << endl;
     cout << endl;
-    Pr1::start();
+
+    Practice3::start();
 }

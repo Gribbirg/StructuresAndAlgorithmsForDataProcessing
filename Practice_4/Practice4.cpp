@@ -10,6 +10,7 @@ void Practice4::start() {
     cout << endl;
 
     unsigned int enter;
+    char ch;
 
     PerfectlyBalancedBinaryTree *tree = createTree();
     cout << endl;
@@ -18,6 +19,8 @@ void Practice4::start() {
          << "0 - exit;" << endl
          << "1 - create new tree;" << endl
          << "2 - print tree;" << endl
+         << "3 - get value of most left node;" << endl
+         << "4 - get path length to node with searched value." << endl
          << endl;
 
     while (true) {
@@ -38,6 +41,20 @@ void Practice4::start() {
 
             case 2:
                 tree->print();
+                break;
+
+            case 3:
+                cout << "Most left value: " << tree->getMostLeftNode() << endl;
+                break;
+
+            case 4:
+                cout << "Enter searched value: ";
+                cin >> ch;
+                enter = tree->getPathLengthToNode(ch);
+                if (enter != -1)
+                    cout << "Path length to '" << ch << "' = " << enter << endl;
+                else
+                    cout << "Char '" << ch << "' isn't in the tree!" << endl;
                 break;
 
             default:

@@ -30,12 +30,17 @@ private:
 
     void printLine(vector<Node *> line, int height, int width);
 
+    char getMostLeftNode(Node *node);
 public:
     PerfectlyBalancedBinaryTree(int count, vector<char> values);
 
     virtual ~PerfectlyBalancedBinaryTree();
 
     void print();
+
+    char getMostLeftNode();
+
+    int getPathLengthToNode(char value);
 };
 
 

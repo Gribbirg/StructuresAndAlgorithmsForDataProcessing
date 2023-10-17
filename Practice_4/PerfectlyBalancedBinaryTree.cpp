@@ -51,6 +51,29 @@ PerfectlyBalancedBinaryTree::~PerfectlyBalancedBinaryTree() {
     delete root;
 }
 
+char PerfectlyBalancedBinaryTree::getMostLeftNode(PerfectlyBalancedBinaryTree::Node *node) {
+    return (node->leftNode == nullptr) ? node->value : getMostLeftNode(node->leftNode);
+}
+
+char PerfectlyBalancedBinaryTree::getMostLeftNode() {
+    return getMostLeftNode(root);
+}
+
+int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
+    vector<Node *> nodes;
+    nodes.push_back(root);
+
+    while (!nodes.empty()) {
+        for (Node * node : nodes) {
+            if (node != nullptr && node->value == value)
+                return (int) log2(nodes.size());
+        }
+        nodes = getNextLine(nodes);
+    }
+
+    return -1;
+}
+
 PerfectlyBalancedBinaryTree::Node::Node(int n, vector<char> values) {
 
     this->value = values[0];

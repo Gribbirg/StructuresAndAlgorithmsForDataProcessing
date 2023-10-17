@@ -82,9 +82,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Files/enter.txt">
-			<Option target="StructuresAndAlgorithmsForDataProcessing"/>
-		</Unit>
 		<Unit filename="C:/Users/gribk/CLionProjects/StructuresAndAlgorithmsForDataProcessing/Practice_1/Ex1.cpp">
 			<Option target="StructuresAndAlgorithmsForDataProcessing"/>
 		</Unit>

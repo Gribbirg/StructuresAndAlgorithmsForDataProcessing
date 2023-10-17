@@ -12,7 +12,6 @@ add_executable(StructuresAndAlgorithmsForDataProcessing main.cpp
         Practice_1/Ex1.h
         Practice_1/Ex3.cpp
         Practice_1/Ex3.h
-        Files/enter.txt
         Practice_2/Practice2.cpp
         Practice_2/Practice2.h
         Practice_2/Ex2_1.cpp

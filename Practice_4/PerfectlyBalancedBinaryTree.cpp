@@ -21,9 +21,9 @@ void PerfectlyBalancedBinaryTree::print() {
 }
 
 void PerfectlyBalancedBinaryTree::printLine(vector<Node *> line, int height, int width) {
-    if (line.empty()) return;
+    if (height - 1 > (int) log2(size)) return;
     int indentation = width / (pow(2, height));
-    cout << string(indentation, ' ') << line[0]->value;
+    cout << string(indentation, ' ') << (line[0] == nullptr ? ' ' : line[0]->value);
     indentation *= 2;
     indentation++;
     for (int i = 1; i < line.size(); i++) {

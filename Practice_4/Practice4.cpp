@@ -20,7 +20,8 @@ void Practice4::start() {
          << "1 - create new tree;" << endl
          << "2 - print tree;" << endl
          << "3 - get value of most left node;" << endl
-         << "4 - get path length to node with searched value." << endl
+         << "4 - get path length to node with searched value;" << endl
+         << "5 - get biggest value of leaf." << endl
          << endl;
 
     while (true) {
@@ -55,6 +56,10 @@ void Practice4::start() {
                     cout << "Path length to '" << ch << "' = " << enter << endl;
                 else
                     cout << "Char '" << ch << "' isn't in the tree!" << endl;
+                break;
+
+            case 5:
+                cout << "Biggest value of leaf: " << tree->getBiggestLeaf() << endl;
                 break;
 
             default:

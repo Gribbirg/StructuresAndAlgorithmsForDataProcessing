@@ -31,6 +31,9 @@ private:
     void printLine(vector<Node *> line, int height, int width);
 
     char getMostLeftNode(Node *node);
+
+    template <typename T> static bool checkForAllNullptr(vector<T *> vector);
+
 public:
     PerfectlyBalancedBinaryTree(int count, vector<char> values);
 
@@ -41,6 +44,8 @@ public:
     char getMostLeftNode();
 
     int getPathLengthToNode(char value);
+
+    char getBiggestLeaf();
 };
 
 

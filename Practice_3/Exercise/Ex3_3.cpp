@@ -27,6 +27,7 @@ void Ex3_3::start() {
     cout << endl;
 
     string phone;
+    string s;
     PhoneOwnerExtended phoneOwner;
 
     cout << "Information about operations numbers:" << endl
@@ -123,21 +124,23 @@ void Ex3_3::start() {
                     strcpy(phoneOwner.phone, phone.c_str());
 
                     cout << "Enter the address: ";
-                    while (getline(cin, phone) && phone.empty());
+                    while (getline(cin, s) && s.empty());
                     cout << endl;
-                    strcpy(phoneOwner.address, phone.c_str());
+                    strcpy(phoneOwner.address, s.c_str());
+                    s = "";
 
                     cout << "Enter the full name: ";
-                    while (getline(cin, phone) && phone.empty());
+                    while (getline(cin, s) && s.empty());
                     cout << endl;
-                    strcpy(phoneOwner.fullName, phone.c_str());
+                    strcpy(phoneOwner.fullName, s.c_str());
+                    s = "";
 
                     if (binHashTable->insert(phoneOwner)) {
                         cout << "Phone " << phone << " is now in the bin file!" << endl;
                     } else
                         cout << "Phone " << phone << " is already in the bin file!" << endl;
                 }
-
+                phone = "";
                 break;
 
             case 7:

@@ -75,41 +75,17 @@ int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
 }
 
 char PerfectlyBalancedBinaryTree::getBiggestLeaf() {
-    vector<Node *> nodes;
-    vector<Node *> nodesPrev;
-    vector<Node *> nodesPrevPrev;
-
-    nodes.push_back(root);
-    while (!nodes.empty() && !checkForAllNullptr<Node>(nodes)) {
-        nodesPrevPrev = nodesPrev;
-        nodesPrev = nodes;
-        nodes = getNextLine(nodes);
-    }
-    char maxValue = (char) 0;
-    char currentValue;
-    for (Node * node: nodesPrevPrev) {
-
-        if (node->leftNode != nullptr && node->rightNode != nullptr)
-            currentValue = max(node->leftNode->value, node->rightNode->value);
-        else if (node->leftNode != nullptr)
-            currentValue = node->leftNode->value;
-        else if (node->rightNode != nullptr)
-            currentValue =  node->rightNode->value;
-        else
-            currentValue = node->value;
-
-        maxValue = max(maxValue, currentValue);
-    }
-
-    return maxValue;
+    return root->getBiggestLeaf();
 }
 
-template<typename T>
-bool PerfectlyBalancedBinaryTree::checkForAllNullptr(vector<T *> vector) {
-    for (T * element : vector)
-        if (element != nullptr)
-            return false;
-    return true;
+char PerfectlyBalancedBinaryTree::Node::getBiggestLeaf() {
+    if (leftNode == nullptr && rightNode == nullptr)
+        return value;
+    if (leftNode == nullptr)
+        return rightNode->getBiggestLeaf();
+    if (rightNode == nullptr)
+        return leftNode->getBiggestLeaf();
+    return max(leftNode->getBiggestLeaf(), rightNode->getBiggestLeaf());
 }
 
 PerfectlyBalancedBinaryTree::Node::Node(int n, vector<char> values) {
@@ -134,3 +110,4 @@ PerfectlyBalancedBinaryTree::Node::~Node() {
     delete leftNode;
     delete rightNode;
 }
+

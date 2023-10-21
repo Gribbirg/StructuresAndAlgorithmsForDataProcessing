@@ -17,11 +17,12 @@ void Practice4::start() {
 
     cout << "Information about operations numbers:" << endl
          << "0 - exit;" << endl
-         << "1 - create new tree;" << endl
-         << "2 - print tree;" << endl
-         << "3 - get value of most left node;" << endl
-         << "4 - get path length to node with searched value;" << endl
-         << "5 - get biggest value of leaf." << endl
+         << "1 - print information;" << endl
+         << "2 - create new tree;" << endl
+         << "3 - print tree;" << endl
+         << "4 - get value of most left node;" << endl
+         << "5 - get path length to node with searched value;" << endl
+         << "6 - get biggest value of leaf." << endl
          << endl;
 
     while (true) {
@@ -36,19 +37,30 @@ void Practice4::start() {
                 return;
 
             case 1:
+                cout << "Information about operations numbers:" << endl
+                     << "0 - exit;" << endl
+                     << "1 - print information;" << endl
+                     << "2 - create new tree;" << endl
+                     << "3 - print tree;" << endl
+                     << "4 - get value of most left node;" << endl
+                     << "5 - get path length to node with searched value;" << endl
+                     << "6 - get biggest value of leaf." << endl;
+                break;
+
+            case 2:
                 delete tree;
                 tree = createTree();
                 break;
 
-            case 2:
+            case 3:
                 tree->print();
                 break;
 
-            case 3:
+            case 4:
                 cout << "Most left value: " << tree->getMostLeftNode() << endl;
                 break;
 
-            case 4:
+            case 5:
                 cout << "Enter searched value: ";
                 cin >> ch;
                 enter = tree->getPathLengthToNode(ch);
@@ -58,7 +70,7 @@ void Practice4::start() {
                     cout << "Char '" << ch << "' isn't in the tree!" << endl;
                 break;
 
-            case 5:
+            case 6:
                 cout << "Biggest value of leaf: " << tree->getBiggestLeaf() << endl;
                 break;
 

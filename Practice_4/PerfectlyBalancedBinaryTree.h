@@ -8,6 +8,8 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <queue>
+
 
 using namespace std;
 
@@ -31,6 +33,8 @@ private:
     int size;
 
     vector<Node *> getNextLine(const vector<Node *> &line);
+
+    static void outAndUpdateOrder(queue<Node *> &order, const string& out);
 
 public:
     PerfectlyBalancedBinaryTree(int count, vector<char> values);

@@ -23,6 +23,8 @@ private:
         virtual ~Node();
 
         char getBiggestLeaf();
+
+        char getMostLeftNode();
     };
 
     Node *root;
@@ -31,8 +33,6 @@ private:
     vector<Node *> getNextLine(const vector<Node *> &line);
 
     void printLine(vector<Node *> line, int height, int indentation);
-
-    char getMostLeftNode(Node *node);
 
 public:
     PerfectlyBalancedBinaryTree(int count, vector<char> values);

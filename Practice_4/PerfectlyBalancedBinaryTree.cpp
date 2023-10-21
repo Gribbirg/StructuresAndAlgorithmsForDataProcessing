@@ -5,6 +5,7 @@
 #include "PerfectlyBalancedBinaryTree.h"
 
 #include <utility>
+#include <queue>
 
 PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(int count, vector<char> values) {
     size = count;
@@ -49,12 +50,12 @@ PerfectlyBalancedBinaryTree::~PerfectlyBalancedBinaryTree() {
     delete root;
 }
 
-char PerfectlyBalancedBinaryTree::getMostLeftNode(PerfectlyBalancedBinaryTree::Node *node) {
-    return (node->leftNode == nullptr) ? node->value : getMostLeftNode(node->leftNode);
+char PerfectlyBalancedBinaryTree::Node::getMostLeftNode() {
+    return (leftNode == nullptr) ? value : leftNode->getMostLeftNode();
 }
 
 char PerfectlyBalancedBinaryTree::getMostLeftNode() {
-    return getMostLeftNode(root);
+    return root->getMostLeftNode();
 }
 
 int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
@@ -62,7 +63,7 @@ int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
     nodes.push_back(root);
 
     while (!nodes.empty()) {
-        for (Node * node : nodes) {
+        for (Node *node: nodes) {
             if (node != nullptr && node->value == value)
                 return (int) log2(nodes.size());
         }

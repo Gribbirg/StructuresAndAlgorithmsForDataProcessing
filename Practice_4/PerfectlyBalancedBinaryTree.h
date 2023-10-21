@@ -32,8 +32,6 @@ private:
 
     vector<Node *> getNextLine(const vector<Node *> &line);
 
-    void printLine(vector<Node *> line, int height, int indentation);
-
 public:
     PerfectlyBalancedBinaryTree(int count, vector<char> values);
 

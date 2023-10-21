@@ -16,21 +16,35 @@ PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(int count, vector<char>
 }
 
 void PerfectlyBalancedBinaryTree::print() {
-    vector<Node *> line;
-    line.push_back(root);
-    printLine(line, 1, ((int) pow(2, (int) log2(size)) * 2 - 1) / 2);
-}
-
-void PerfectlyBalancedBinaryTree::printLine(vector<Node *> line, int height, int indentation) {
-    if (height - 1 > (int) log2(size)) return;
-    cout << string(indentation, ' ') << (line[0] == nullptr ? ' ' : line[0]->value);
-    int ind = indentation * 2 + 1;
-    for (int i = 1; i < line.size(); i++) {
-        cout << string(ind, ' ');
-        cout << (line[i] == nullptr ? ' ' : line[i]->value);
+    queue<Node *> order;
+    order.push(root);
+    int height = 0;
+    int indentation = ((int) pow(2, (int) log2(size)) * 2 - 1);
+    while (height - 1 < (int) log2(size)) {
+        cout << string((indentation - 1) / 2, ' ');
+        for (int i = 0; i < pow(2, height) - 1; i++) {
+            if (order.front() == nullptr)
+                cout << ' ';
+            else {
+                cout << order.front()->value;
+                order.push(order.front()->leftNode);
+                order.push(order.front()->rightNode);
+            }
+            order.pop();
+            cout << string(indentation, ' ');
+        }
+        if (order.front() == nullptr)
+            cout << ' ';
+        else {
+            cout << order.front()->value;
+            order.push(order.front()->leftNode);
+            order.push(order.front()->rightNode);
+        }
+        order.pop();
+        cout << string((indentation - 1) / 2, ' ') << endl;
+        height++;
+        indentation /= 2;
     }
-    cout << endl;
-    printLine(getNextLine(line), height + 1, indentation / 2);
 }
 
 vector<PerfectlyBalancedBinaryTree::Node *> PerfectlyBalancedBinaryTree::getNextLine(const vector<Node *> &line) {

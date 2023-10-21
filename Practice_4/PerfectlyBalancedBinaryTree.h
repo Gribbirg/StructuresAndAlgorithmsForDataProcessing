@@ -30,7 +30,7 @@ private:
 
     vector<Node *> getNextLine(const vector<Node *> &line);
 
-    void printLine(vector<Node *> line, int height, int width);
+    void printLine(vector<Node *> line, int height, int indentation);
 
     char getMostLeftNode(Node *node);
 

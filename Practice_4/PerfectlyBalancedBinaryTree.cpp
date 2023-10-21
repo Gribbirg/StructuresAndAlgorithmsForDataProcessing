@@ -17,21 +17,19 @@ PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(int count, vector<char>
 void PerfectlyBalancedBinaryTree::print() {
     vector<Node *> line;
     line.push_back(root);
-    printLine(line, 1, (int) pow(2, (int) log2(size)) * 2 - 1);
+    printLine(line, 1, ((int) pow(2, (int) log2(size)) * 2 - 1) / 2);
 }
 
-void PerfectlyBalancedBinaryTree::printLine(vector<Node *> line, int height, int width) {
+void PerfectlyBalancedBinaryTree::printLine(vector<Node *> line, int height, int indentation) {
     if (height - 1 > (int) log2(size)) return;
-    int indentation = width / (pow(2, height));
     cout << string(indentation, ' ') << (line[0] == nullptr ? ' ' : line[0]->value);
-    indentation *= 2;
-    indentation++;
+    int ind = indentation * 2 + 1;
     for (int i = 1; i < line.size(); i++) {
-        cout << string(indentation, ' ');
+        cout << string(ind, ' ');
         cout << (line[i] == nullptr ? ' ' : line[i]->value);
     }
     cout << endl;
-    printLine(getNextLine(line), height + 1, width);
+    printLine(getNextLine(line), height + 1, indentation / 2);
 }
 
 vector<PerfectlyBalancedBinaryTree::Node *> PerfectlyBalancedBinaryTree::getNextLine(const vector<Node *> &line) {

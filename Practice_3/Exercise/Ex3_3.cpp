@@ -212,6 +212,7 @@ void Ex3_3::binTest(fstream &fstream1, fstream &fstream2, unsigned int testNum) 
 
     cout << "Data before test: " << endl;
     testBinTable.readAll();
+    cout << endl;
     testBinTable.printTable();
     cout << endl;
 
@@ -247,6 +248,7 @@ void Ex3_3::binTest(fstream &fstream1, fstream &fstream2, unsigned int testNum) 
 
     cout << "Data after test: " << endl;
     testBinTable.readAll();
+    cout << endl;
     testBinTable.printTable();
 }
 

@@ -10,13 +10,13 @@
 
 PhoneOwnerExtended::PhoneOwnerExtended() {}
 
-PhoneOwnerExtended::PhoneOwnerExtended(const string& phone, int i) {
+PhoneOwnerExtended::PhoneOwnerExtended(const string &phone, int i) {
     strcpy(this->phone, phone.c_str());
     strcpy(this->address, PhoneOwnerExtended::getRandomAddress(i).c_str());
     strcpy(this->fullName, PhoneOwnerExtended::getRandomFullName(i).c_str());
 }
 
-PhoneOwnerExtended::PhoneOwnerExtended(const string& phone, const string& address, const string& fullName) {
+PhoneOwnerExtended::PhoneOwnerExtended(const string &phone, const string &address, const string &fullName) {
     strcpy(this->phone, phone.c_str());
     strcpy(this->address, address.c_str());
     strcpy(this->fullName, fullName.c_str());
@@ -27,22 +27,23 @@ PhoneOwnerExtended PhoneOwnerExtended::getRandomOwner(int i) {
 }
 
 string PhoneOwnerExtended::to_string() {
-    return "Phone owner:\nphone - " + string(phone) + "\naddress - " + string(address) + "\nfull name - " + string(fullName);
+    return "Phone owner: phone - " + string(phone) + "; address - " + string(address) + "; full name - " +
+           string(fullName) + ".";
 }
 
 unsigned long long int PhoneOwnerExtended::phoneToLong(string phone) {
     return stoll(string({
-            phone[4],
-            phone[5],
-            phone[6],
-            phone[9],
-            phone[10],
-            phone[11],
-            phone[13],
-            phone[14],
-            phone[16],
-            phone[17]
-    }));
+                                phone[4],
+                                phone[5],
+                                phone[6],
+                                phone[9],
+                                phone[10],
+                                phone[11],
+                                phone[13],
+                                phone[14],
+                                phone[16],
+                                phone[17]
+                        }));
 }
 
 int PhoneOwnerExtended::getRandom(unsigned int i) {

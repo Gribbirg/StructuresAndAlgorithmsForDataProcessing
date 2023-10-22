@@ -55,7 +55,7 @@ void BinFileWork::readAll() {
     file.read((char *) &phoneOwner, sizeof(PhoneOwnerExtended));
     int i = 0;
     while (!file.eof()) {
-        cout << i << ":\n" << phoneOwner.to_string() << endl << endl;
+        cout << i << ": " << phoneOwner.to_string() << endl;
         i++;
         file.read((char *) &phoneOwner, sizeof(PhoneOwnerExtended));
     }

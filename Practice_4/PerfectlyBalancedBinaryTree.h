@@ -32,8 +32,6 @@ private:
     Node *root;
     int size;
 
-    vector<Node *> getNextLine(const vector<Node *> &line);
-
     static void outAndUpdateOrder(queue<Node *> &order, const string& out);
 
 public:

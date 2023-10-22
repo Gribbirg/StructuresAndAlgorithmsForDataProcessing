@@ -42,19 +42,6 @@ void PerfectlyBalancedBinaryTree::outAndUpdateOrder(queue<Node *> &order, const 
     cout << out;
 }
 
-vector<PerfectlyBalancedBinaryTree::Node *> PerfectlyBalancedBinaryTree::getNextLine(const vector<Node *> &line) {
-    vector<Node *> newLine;
-    for (Node *node: line) {
-        if (node == nullptr) {
-            newLine.clear();
-            break;
-        }
-        newLine.push_back(node->leftNode);
-        newLine.push_back(node->rightNode);
-    }
-    return newLine;
-}
-
 PerfectlyBalancedBinaryTree::~PerfectlyBalancedBinaryTree() {
     delete root;
 }
@@ -68,15 +55,23 @@ char PerfectlyBalancedBinaryTree::getMostLeftNode() {
 }
 
 int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
-    vector<Node *> nodes;
-    nodes.push_back(root);
+    queue<Node *> nodes;
+    Node *node;
+    nodes.push(root);
+    int len = 1;
+    int height = 0;
 
-    while (!nodes.empty()) {
-        for (Node *node: nodes) {
-            if (node != nullptr && node->value == value)
-                return (int) log2(nodes.size());
+    while (len != 0) {
+        for (int i = 0; i < len; i++) {
+            node = nodes.front();
+            nodes.pop();
+            if (node->value == value)
+                return height;
+            if (node-> leftNode != nullptr) nodes.push(node->leftNode);
+            if (node-> rightNode != nullptr) nodes.push(node->rightNode);
         }
-        nodes = getNextLine(nodes);
+        len = nodes.size();
+        height++;
     }
 
     return -1;

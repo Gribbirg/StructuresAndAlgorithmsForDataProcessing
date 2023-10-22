@@ -58,22 +58,22 @@ char PerfectlyBalancedBinaryTree::getMostLeftNode() {
 }
 
 int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
-    queue<Node *> nodes;
+    queue<Node *> order;
     Node *node;
-    nodes.push(root);
+    order.push(root);
     int len = 1;
     int height = 0;
 
     while (len != 0) {
         for (int i = 0; i < len; i++) {
-            node = nodes.front();
-            nodes.pop();
+            node = order.front();
+            order.pop();
             if (node->value == value)
                 return height;
-            if (node-> leftNode != nullptr) nodes.push(node->leftNode);
-            if (node-> rightNode != nullptr) nodes.push(node->rightNode);
+            if (node-> leftNode != nullptr) order.push(node->leftNode);
+            if (node-> rightNode != nullptr) order.push(node->rightNode);
         }
-        len = nodes.size();
+        len = order.size();
         height++;
     }
 

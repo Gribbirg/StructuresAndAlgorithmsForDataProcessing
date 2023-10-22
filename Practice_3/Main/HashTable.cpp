@@ -211,7 +211,6 @@ int HashTable::findElement(const string &phone) {
 }
 
 HashTable::~HashTable() {
-    cout << 1;
     delete[] table;
 }
 

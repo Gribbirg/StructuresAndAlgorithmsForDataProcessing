@@ -40,6 +40,8 @@ private:
     int findElement(const string& phone);
 
 public:
+    virtual ~HashTable();
+
     HashTable(unsigned int size);
 
     bool insert(const string &phone, int position, bool outIndexes = false);

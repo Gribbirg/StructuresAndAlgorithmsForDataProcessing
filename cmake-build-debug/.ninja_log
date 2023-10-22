@@ -1,8 +1,0 @@
-# ninja log v5
-24	3264	7158858348592396	CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/main.cpp.obj	bd32fa8e7c408b34
-22	2238	7158851083754283	CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Pr1.cpp.obj	a81e85658e77c449
-11	1753	7158867799128238	CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_2/Ex2.cpp.obj	ade28468d14f73a3
-24	1221	7158801361267401	CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/ForAll/WorkWithMass.cpp.obj	1e9fcdb5183bede8
-6	2533	7158795181345987	CMakeFiles/StructuresAndAlgorithmsForDataProcessing.dir/Practice_1/Ex_1/Ex1.cpp.obj	fc0f1c76b4534f8f
-1755	2074	7158867802275250	StructuresAndAlgorithmsForDataProcessing.exe	4c5c29fe6e90c8ea
-1	403	7158872135660706	build.ninja	85b60e2e2c180f45

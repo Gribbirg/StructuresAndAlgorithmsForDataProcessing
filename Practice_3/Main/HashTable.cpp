@@ -210,4 +210,8 @@ int HashTable::findElement(const string &phone) {
     return -1;
 }
 
+HashTable::~HashTable() {
+    delete[] table;
+}
+
 

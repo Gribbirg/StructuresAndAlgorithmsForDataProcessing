@@ -3,7 +3,6 @@
 //
 
 #include "PerfectlyBalancedBinaryTree.h"
-
 #include <utility>
 
 PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(int count, vector<char> values) {
@@ -85,13 +84,13 @@ char PerfectlyBalancedBinaryTree::getBiggestLeaf() {
 }
 
 char PerfectlyBalancedBinaryTree::Node::getBiggestLeaf() {
-    if (leftNode == nullptr && rightNode == nullptr)
-        return value;
-    if (leftNode == nullptr)
-        return rightNode->getBiggestLeaf();
-    if (rightNode == nullptr)
+    if (leftNode != nullptr && rightNode != nullptr)
+        return max(leftNode->getBiggestLeaf(), rightNode->getBiggestLeaf());
+    if (leftNode != nullptr)
         return leftNode->getBiggestLeaf();
-    return max(leftNode->getBiggestLeaf(), rightNode->getBiggestLeaf());
+    if (rightNode != nullptr)
+        return rightNode->getBiggestLeaf();
+    return value;
 }
 
 PerfectlyBalancedBinaryTree::Node::Node(int n, vector<char> values) {

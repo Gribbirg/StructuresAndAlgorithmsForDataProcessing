@@ -12,6 +12,6 @@ int main() {
 
 //    Pr1::start();
 //    Practice2::start();
-    Practice3::start();
-//    Practice4::start();
+//    Practice3::start();
+    Practice4::start();
 }

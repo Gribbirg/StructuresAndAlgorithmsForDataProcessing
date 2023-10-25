@@ -96,8 +96,8 @@ void Ex3_2::start() {
                 if (phone == "0") phone = PhoneOwnerExtended::getRandomPhoneNumber(i);
 
                 cout << endl;
-                if (hashTable.insert(phone, i)) {
-                    cout << "Phone " << phone << " is now in the table!" << endl;
+                if (hashTable.insert(phone, i, true)) {
+                    cout << endl << "Phone " << phone << " is now in the table!" << endl;
                     i++;
                 } else
                     cout << "Phone " << phone << " is already in the table!" << endl;

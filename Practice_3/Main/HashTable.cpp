@@ -64,16 +64,19 @@ bool HashTable::insert(const string &phone, int position, bool outIndexes) {
     unsigned bias = biasHesh(PhoneOwnerExtended::phoneToLong(phone), size);
 
     if (outIndexes) {
-        cout << "Hash:" << num << endl;
-        cout << "Bias:" << bias % size << endl;
-        cout << "Indexes:" << endl;
+        cout << "Hash: " << num << endl;
+        cout << "Bias: " << bias % size << endl;
+        cout << "Indexes:";
     }
 
     while (!table[num].free) {
         num = (num + bias) % size;
         if (outIndexes)
-            cout << num << endl;
+            cout << ' ' << num;
     }
+
+    if (outIndexes)
+        cout << endl;
 
     table[num] = HashTableRow(phone, position);
 

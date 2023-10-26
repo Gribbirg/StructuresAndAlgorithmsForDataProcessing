@@ -5,10 +5,10 @@
 #include "PerfectlyBalancedBinaryTree.h"
 #include <utility>
 
-PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(int count, vector<char> values) {
-    size = count;
-    if (count != 0)
-        root = new Node(count, std::move(values));
+PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(vector<char> &values) {
+    size = (unsigned int)values.size();
+    if (size != 0)
+        root = new Node(values);
     else
         root = nullptr;
 }
@@ -93,22 +93,16 @@ char PerfectlyBalancedBinaryTree::Node::getBiggestLeaf() {
     return value;
 }
 
-PerfectlyBalancedBinaryTree::Node::Node(int n, vector<char> values) {
+PerfectlyBalancedBinaryTree::Node::Node(vector<char> &values) {
 
     this->value = values[0];
-    int nl = n / 2;
-    int nr = n - nl - 1;
-    vector<char> valLeft;
-    vector<char> valRight;
 
-    if (nl != 0)
-        leftNode = new Node(nl, vector<char>(values.begin() + 1, values.begin() + 1 + nl));
-    else
-        leftNode = nullptr;
-    if (nr != 0)
-        rightNode = new Node(nr, vector<char>(values.begin() + 1 + nl, values.end()));
-    else
-        rightNode = nullptr;
+    vector<char> valLeft = vector<char>(values.begin() + 1, values.begin() + 1 + (int)values.size() / 2);
+    vector<char> valRight = vector<char>(values.begin() + 1 + (int)valLeft.size(), values.end());
+
+    leftNode = valLeft.empty() ? nullptr : new Node(valLeft);
+    rightNode = valRight.empty() ? nullptr : new Node(valRight);
+
 }
 
 PerfectlyBalancedBinaryTree::Node::~Node() {

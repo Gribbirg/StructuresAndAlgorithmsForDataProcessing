@@ -20,7 +20,7 @@ private:
         Node *leftNode;
         Node *rightNode;
 
-        Node(int n, vector<char> values);
+        Node(vector<char> &values);
 
         virtual ~Node();
 
@@ -30,12 +30,12 @@ private:
     };
 
     Node *root;
-    int size;
+    unsigned int size;
 
     static void outAndUpdateOrder(queue<Node *> &order, const string& out);
 
 public:
-    PerfectlyBalancedBinaryTree(int count, vector<char> values);
+    PerfectlyBalancedBinaryTree(vector<char> &values);
 
     virtual ~PerfectlyBalancedBinaryTree();
 

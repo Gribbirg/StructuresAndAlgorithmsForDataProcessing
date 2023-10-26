@@ -106,5 +106,5 @@ PerfectlyBalancedBinaryTree *Practice4::createTree() {
             values.push_back(val);
         }
     }
-    return new PerfectlyBalancedBinaryTree(n, values);
+    return new PerfectlyBalancedBinaryTree(values);
 }

@@ -28,7 +28,6 @@ void Practice4::start() {
     while (true) {
         cout << "Enter operation number or 0 for exit: ";
         cin >> enter;
-        cout << endl;
 
         switch (enter) {
 
@@ -106,5 +105,7 @@ PerfectlyBalancedBinaryTree *Practice4::createTree() {
             values.push_back(val);
         }
     }
-    return new PerfectlyBalancedBinaryTree(values);
+    auto *tree = new PerfectlyBalancedBinaryTree(values);
+    tree->print();
+    return tree;
 }

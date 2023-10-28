@@ -12,18 +12,25 @@ PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(vector<char> &values) {
 }
 
 void PerfectlyBalancedBinaryTree::print() {
+    cout << "Tree:" << endl;
+
     queue<Node *> order;
     order.push(root);
     int height = 0;
     int maxHeight = getHeight();
     int indentation = ((int) pow(2, maxHeight) * 2 - 1);
     int lenElCount = 1;
-    while (height <= maxHeight) {
+
+    while (height < maxHeight) {
+
         cout << string((indentation - 1) / 2, ' ');
+
         for (int i = 0; i < lenElCount - 1; i++)
             outAndUpdateOrder(order, string(indentation, ' '));
+
         outAndUpdateOrder(order, string((indentation - 1) / 2, ' '));
         cout << endl;
+
         height++;
         indentation /= 2;
         lenElCount *= 2;

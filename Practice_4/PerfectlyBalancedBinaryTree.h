@@ -27,12 +27,15 @@ private:
         char getBiggestLeaf();
 
         char getMostLeftNode();
+
+        int getHeight(int height);
     };
 
     Node *root;
-    unsigned int size;
 
     static void outAndUpdateOrder(queue<Node *> &order, const string& out);
+
+    int getHeight();
 
 public:
     PerfectlyBalancedBinaryTree(vector<char> &values);

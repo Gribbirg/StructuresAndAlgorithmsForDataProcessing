@@ -3,11 +3,9 @@
 //
 
 #include "PerfectlyBalancedBinaryTree.h"
-#include <utility>
 
 PerfectlyBalancedBinaryTree::PerfectlyBalancedBinaryTree(vector<char> &values) {
-    size = (unsigned int)values.size();
-    if (size != 0)
+    if (!values.empty())
         root = new Node(values);
     else
         root = nullptr;
@@ -17,7 +15,7 @@ void PerfectlyBalancedBinaryTree::print() {
     queue<Node *> order;
     order.push(root);
     int height = 0;
-    int maxHeight = (int) log2(size);
+    int maxHeight = getHeight();
     int indentation = ((int) pow(2, maxHeight) * 2 - 1);
     int lenElCount = 1;
     while (height <= maxHeight) {
@@ -32,7 +30,7 @@ void PerfectlyBalancedBinaryTree::print() {
     }
 }
 
-void PerfectlyBalancedBinaryTree::outAndUpdateOrder(queue<Node *> &order, const string& out) {
+void PerfectlyBalancedBinaryTree::outAndUpdateOrder(queue<Node *> &order, const string &out) {
     if (order.front() == nullptr)
         cout << ' ';
     else {
@@ -60,28 +58,40 @@ int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
     queue<Node *> order;
     Node *node;
     order.push(root);
-    int len = 1;
-    int height = 0;
+    int len = 0;
 
-    while (len != 0) {
-        for (int i = 0; i < len; i++) {
-            node = order.front();
-            order.pop();
-            if (node->value == value)
-                return height;
-            if (node-> leftNode != nullptr) order.push(node->leftNode);
-            if (node-> rightNode != nullptr) order.push(node->rightNode);
-        }
-        len = order.size();
-        height++;
+    while (!order.empty()) {
+        len++;
+        node = order.front();
+        order.pop();
+
+        if (node->value == value)
+            return (int) log2(len);
+
+        if (node->leftNode != nullptr) order.push(node->leftNode);
+        if (node->rightNode != nullptr) order.push(node->rightNode);
     }
-
     return -1;
 }
 
 char PerfectlyBalancedBinaryTree::getBiggestLeaf() {
     return root->getBiggestLeaf();
 }
+
+int PerfectlyBalancedBinaryTree::getHeight() {
+    return (root == nullptr)? 0 : root->getHeight(1);
+}
+
+int PerfectlyBalancedBinaryTree::Node::getHeight(int height) {
+    if (leftNode != nullptr && rightNode != nullptr)
+        return max(leftNode->getHeight(height + 1), rightNode->getHeight(height + 1));
+    if (leftNode != nullptr)
+        return leftNode->getHeight(height + 1);
+    if (rightNode != nullptr)
+        return rightNode->getHeight(height + 1);
+    return height;
+}
+
 
 char PerfectlyBalancedBinaryTree::Node::getBiggestLeaf() {
     if (leftNode != nullptr && rightNode != nullptr)
@@ -97,8 +107,8 @@ PerfectlyBalancedBinaryTree::Node::Node(vector<char> &values) {
 
     this->value = values[0];
 
-    vector<char> valLeft = vector<char>(values.begin() + 1, values.begin() + 1 + (int)values.size() / 2);
-    vector<char> valRight = vector<char>(values.begin() + 1 + (int)valLeft.size(), values.end());
+    vector<char> valLeft = vector<char>(values.begin() + 1, values.begin() + 1 + (int) values.size() / 2);
+    vector<char> valRight = vector<char>(values.begin() + 1 + (int) valLeft.size(), values.end());
 
     leftNode = valLeft.empty() ? nullptr : new Node(valLeft);
     rightNode = valRight.empty() ? nullptr : new Node(valRight);
@@ -109,4 +119,3 @@ PerfectlyBalancedBinaryTree::Node::~Node() {
     delete leftNode;
     delete rightNode;
 }
-

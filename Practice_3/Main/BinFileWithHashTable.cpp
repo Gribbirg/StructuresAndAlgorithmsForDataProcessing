@@ -16,7 +16,7 @@ BinFileWithHashTable::BinFileWithHashTable(string fileName) : HashTable(5),
 
 BinFileWithHashTable::BinFileWithHashTable(string fileName, int newFileSize) :
         HashTable(getOptimizedSize(newFileSize)), BinFileWork(std::move(fileName)) {
-    fillBin(newFileSize);
+    fillBinFile(newFileSize);
     dataToHash();
 }
 

@@ -32,7 +32,9 @@ public:
 
     PhoneOwnerExtended getElement(unsigned int position);
 
-    void fillBin(int count);
+    void fillBinFile(int count);
+
+    void fillBinFromEnter();
 
     void insert(PhoneOwnerExtended phoneOwner, unsigned int position);
 };

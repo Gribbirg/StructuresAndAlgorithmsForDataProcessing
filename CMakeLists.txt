@@ -40,4 +40,12 @@ add_executable(StructuresAndAlgorithmsForDataProcessing main.cpp
         Practice_4/Practice4.h
         Practice_4/PerfectlyBalancedBinaryTree.cpp
         Practice_4/PerfectlyBalancedBinaryTree.h
+        Practice_5/Practice5.cpp
+        Practice_5/Practice5.h
+        Practice_5/PhoneOwnerCut.cpp
+        Practice_5/PhoneOwnerCut.h
+        Practice_5/BinaryTrees/BinaryTree.cpp
+        Practice_5/BinaryTrees/BinaryTree.h
+        Practice_5/BinaryTrees/BinarySearchTree.cpp
+        Practice_5/BinaryTrees/BinarySearchTree.h
 )

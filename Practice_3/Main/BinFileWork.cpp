@@ -79,10 +79,23 @@ PhoneOwnerExtended BinFileWork::getElement(unsigned int position) {
     return phoneOwner;
 }
 
-void BinFileWork::fillBin(int count) {
-
+void BinFileWork::fillBinFile(int count) {
     fillFileWithRandom(count);
+    fillBinFromEnter();
+}
 
+void BinFileWork::insert(PhoneOwnerExtended phoneOwner, unsigned int position) {
+    file.open(fileName, ios::out | ios::in | ios::binary);
+    if (!file.is_open()) {
+        cout << "Error while opening file!" << endl;
+        exit(0);
+    }
+    file.seekg(position * sizeof(PhoneOwnerExtended), ios::beg);
+    file.write((char *) &phoneOwner, sizeof(PhoneOwnerExtended));
+    file.close();
+}
+
+void BinFileWork::fillBinFromEnter() {
     file1.open("enter.txt", ios::in);
     file.open(fileName, ios::out | ios::binary | ios::trunc);
 
@@ -109,17 +122,6 @@ void BinFileWork::fillBin(int count) {
     }
 
     file1.close();
-    file.close();
-}
-
-void BinFileWork::insert(PhoneOwnerExtended phoneOwner, unsigned int position) {
-    file.open(fileName, ios::out | ios::in | ios::binary);
-    if (!file.is_open()) {
-        cout << "Error while opening file!" << endl;
-        exit(0);
-    }
-    file.seekg(position * sizeof(PhoneOwnerExtended), ios::beg);
-    file.write((char *) &phoneOwner, sizeof(PhoneOwnerExtended));
     file.close();
 }
 

@@ -78,8 +78,6 @@ void Practice4::start() {
         }
         cout << endl;
     }
-
-
 }
 
 PerfectlyBalancedBinaryTree *Practice4::createTree() {

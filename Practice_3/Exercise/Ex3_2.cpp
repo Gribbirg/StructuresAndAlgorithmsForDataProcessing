@@ -79,7 +79,7 @@ void Ex3_2::start() {
                 while (getline(cin, phone) && phone.empty());
                 cout << endl;
 
-                enter = hashTable.getPosition(phone);
+                enter = hashTable.find(phone);
                 if (enter == -1)
                     cout << "The phone " << phone << " isn't in the table!" << endl;
                 else
@@ -209,13 +209,13 @@ void Ex3_2::tableTest(unsigned int testNum) {
 
         case 5:
             cout << "Find element +7 (090) 390-00-31" << endl;
-            cout << "Position of it: " << testTable.getPosition("+7 (090) 390-00-31") << endl;
+            cout << "Position of it: " << testTable.find("+7 (090) 390-00-31") << endl;
             break;
 
         case 6:
             cout << "Find element +7 (311) 931-19-68 after delete +7 (780) 780-28-78" << endl;
             testTable.deleteElement("+7 (780) 780-28-78");
-            cout << "Position of it: " << testTable.getPosition("+7 (311) 931-19-68") << endl;
+            cout << "Position of it: " << testTable.find("+7 (311) 931-19-68") << endl;
             break;
 
     }

@@ -3,11 +3,11 @@
 //
 
 #include <iomanip>
-#include "HashTable.h"
+#include "HashTableSearch.h"
 
-#include "../PhoneOwnerExtended.h"
+#include "../PhoneOwnerCut.h"
 
-void HashTable::HashTableRow::print() {
+void HashTableSearch::HashTableSearchRow::print() {
     string phoneStr, positionStr, freeStr, deletedStr;
     if (phone.empty()) {
         phoneStr = "none";
@@ -27,58 +27,47 @@ void HashTable::HashTableRow::print() {
          << ", was deleted: " << setw(8) << deletedStr;
 }
 
-HashTable::HashTableRow::HashTableRow(string phone, int position) : phone(std::move(phone)),
+HashTableSearch::HashTableSearchRow::HashTableSearchRow(string phone, int position) : phone(std::move(phone)),
                                                                     position(position) {
     free = false;
     deleted = false;
 }
 
-HashTable::HashTableRow::HashTableRow() {
+HashTableSearch::HashTableSearchRow::HashTableSearchRow() {
     phone = "";
     position = 0;
     free = true;
     deleted = false;
 }
 
-HashTable::HashTableSearch(unsigned int size) {
+HashTableSearch::HashTableSearch(unsigned int size) {
     this->size = size;
     busy = 0;
-    table = new HashTableRow[size];
+    table = new HashTableSearchRow[size];
 }
 
-unsigned int HashTable::hesh(unsigned long long int phone, unsigned int size) {
+unsigned int HashTableSearch::hesh(unsigned long long int phone, unsigned int size) {
     return phone % size;
 }
 
-unsigned int HashTable::biasHesh(unsigned long long int phone, unsigned int size) {
+unsigned int HashTableSearch::biasHesh(unsigned long long int phone, unsigned int size) {
     unsigned int bias = (phone / size) % size;
     return bias == 0 || size % bias == 0 ? 1 : bias;
 }
 
-bool HashTable::insert(const string &phone, int position, bool outIndexes) {
+bool HashTableSearch::insert(const string &phone, int position) {
 
     if (findElement(phone) != -1)
         return false;
 
-    unsigned int num = hesh(PhoneOwnerExtended::phoneToLong(phone), size);
-    unsigned bias = biasHesh(PhoneOwnerExtended::phoneToLong(phone), size);
-
-    if (outIndexes) {
-        cout << "Hash: " << num << endl;
-        cout << "Bias: " << bias % size << endl;
-        cout << "Indexes:";
-    }
+    unsigned int num = hesh(PhoneOwnerCut::phoneToLong(phone), size);
+    unsigned bias = biasHesh(PhoneOwnerCut::phoneToLong(phone), size);
 
     while (!table[num].free) {
         num = (num + bias) % size;
-        if (outIndexes)
-            cout << ' ' << num;
     }
 
-    if (outIndexes)
-        cout << endl;
-
-    table[num] = HashTableRow(phone, position);
+    table[num] = HashTableSearchRow(phone, position);
 
     busy++;
     if (size * 0.75 < busy)
@@ -87,7 +76,7 @@ bool HashTable::insert(const string &phone, int position, bool outIndexes) {
     return true;
 }
 
-unsigned int HashTable::getOptimizedSize(unsigned int busy) {
+unsigned int HashTableSearch::getOptimizedSize(unsigned int busy) {
     if (busy <= 1) return 5;
     busy = busy * 2;
     while (!isEasy(busy))
@@ -96,12 +85,12 @@ unsigned int HashTable::getOptimizedSize(unsigned int busy) {
 }
 
 
-void HashTable::update(unsigned int sizeNew) {
-    HashTableRow *tableOld = table;
+void HashTableSearch::update(unsigned int sizeNew) {
+    HashTableSearchRow *tableOld = table;
     unsigned int sizeOld = size;
     size = sizeNew;
     busy = 0;
-    table = new HashTableRow[size];
+    table = new HashTableSearchRow[size];
     for (int i = 0; i < sizeOld; i++) {
         if (!tableOld[i].free) {
             insert(tableOld[i].phone, tableOld[i].position);
@@ -110,14 +99,14 @@ void HashTable::update(unsigned int sizeNew) {
     delete[] tableOld;
 }
 
-bool HashTable::isEasy(unsigned long long int x) {
+bool HashTableSearch::isEasy(unsigned long long int x) {
     for (int i = 2; i <= x / 2; i++)
         if (x % i == 0)
             return false;
     return true;
 }
 
-void HashTable::printTable() {
+void HashTableSearch::printTable() {
     cout << "Hash table for " << size << " elements with " << busy << " inside:" << endl;
     for (int i = 0; i < size; i++) {
         cout << setw(8) << i << ": ";
@@ -126,7 +115,7 @@ void HashTable::printTable() {
     }
 }
 
-void HashTable::exportToFile(fstream &resultFile) {
+void HashTableSearch::exportToFile(fstream &resultFile) {
     resultFile.open("result.txt", ios::out | ios::trunc);
     if (!resultFile.is_open()) {
         cout << "Error while opening file!" << endl;
@@ -161,7 +150,7 @@ void HashTable::exportToFile(fstream &resultFile) {
     resultFile.close();
 }
 
-int HashTable::find(const string &phone) {
+int HashTableSearch::find(const string &phone) {
 
     int num = findElement(phone);
     if (num != -1)
@@ -170,15 +159,15 @@ int HashTable::find(const string &phone) {
     return -1;
 }
 
-unsigned int HashTable::getSize() const {
+unsigned int HashTableSearch::getSize() const {
     return size;
 }
 
-unsigned int HashTable::getBusy() const {
+unsigned int HashTableSearch::getBusy() const {
     return busy;
 }
 
-int HashTable::deleteElement(const string &phone) {
+int HashTableSearch::deleteElement(const string &phone) {
     int num = findElement(phone);
 
     if (num != -1) {
@@ -194,15 +183,15 @@ int HashTable::deleteElement(const string &phone) {
     return -1;
 }
 
-void HashTable::reducePosition(const string &phone) {
+void HashTableSearch::reducePosition(const string &phone) {
     int num = findElement(phone);
     if (num != -1)
         table[num].position--;
 }
 
-int HashTable::findElement(const string &phone) {
-    unsigned int num = hesh(PhoneOwnerExtended::phoneToLong(phone), size);
-    unsigned int bias = biasHesh(PhoneOwnerExtended::phoneToLong(phone), size);
+int HashTableSearch::findElement(const string &phone) {
+    unsigned int num = hesh(PhoneOwnerCut::phoneToLong(phone), size);
+    unsigned int bias = biasHesh(PhoneOwnerCut::phoneToLong(phone), size);
 
     while (!table[num].free || table[num].deleted) {
         if (!table[num].free && table[num].phone == phone) {
@@ -213,7 +202,7 @@ int HashTable::findElement(const string &phone) {
     return -1;
 }
 
-HashTable::~HashTableSearch() {
+HashTableSearch::~HashTableSearch() {
     delete[] table;
 }
 

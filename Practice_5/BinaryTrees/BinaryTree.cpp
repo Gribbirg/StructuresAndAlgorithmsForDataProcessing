@@ -3,16 +3,48 @@
 //
 
 #include "BinaryTree.h"
+#include "../PhoneOwnerCut.h"
 
-BinaryTree::Node::~Node() {
+#include <utility>
+
+BinaryTree::NodeTree::~NodeTree() {
     delete rightNode;
     delete leftNode;
 }
 
-void BinaryTree::Node::print(int level) {
+void BinaryTree::NodeTree::print(int level) {
     if (rightNode != nullptr) rightNode->print(level + 1);
-    cout << string(level * 10, ' ') << value << endl;
+    cout << string(level * 10, ' ') << value << " in " << position << endl;
     if (leftNode != nullptr) leftNode->print(level + 1);
+}
+
+BinaryTree::NodeTree::NodeTree(string value, int position) : value(std::move(value)), position(position) {
+    leftNode = nullptr;
+    rightNode = nullptr;
+}
+
+bool BinaryTree::NodeTree::operator<(const BinaryTree::NodeTree &rhs) const {
+    return PhoneOwnerCut::phoneToLong(value) < PhoneOwnerCut::phoneToLong(rhs.value);
+}
+
+bool BinaryTree::NodeTree::operator>(const BinaryTree::NodeTree &rhs) const {
+    return rhs < *this;
+}
+
+bool BinaryTree::NodeTree::operator<=(const BinaryTree::NodeTree &rhs) const {
+    return !(rhs < *this);
+}
+
+bool BinaryTree::NodeTree::operator>=(const BinaryTree::NodeTree &rhs) const {
+    return !(*this < rhs);
+}
+
+bool BinaryTree::NodeTree::operator==(const BinaryTree::NodeTree &rhs) const {
+    return PhoneOwnerCut::phoneToLong(value) == PhoneOwnerCut::phoneToLong(rhs.value);
+}
+
+bool BinaryTree::NodeTree::operator!=(const BinaryTree::NodeTree &rhs) const {
+    return !(rhs == *this);
 }
 
 void BinaryTree::print() {
@@ -20,4 +52,4 @@ void BinaryTree::print() {
     root->print();
 }
 
-BinaryTree::BinaryTree(BinaryTree::Node *root) : root(root) {}
+BinaryTree::BinaryTree() : root(nullptr) {}

@@ -44,7 +44,7 @@ void BinFileWithHashTable::dataToHash() {
 }
 
 PhoneOwnerExtended BinFileWithHashTable::find(const std::string &phoneNumber) {
-    int position = HashTable::getPosition(phoneNumber);
+    int position = HashTable::find(phoneNumber);
     return position == -1 ? PhoneOwnerExtended("", "", "") : getElement(position);
 }
 
@@ -82,7 +82,7 @@ bool BinFileWithHashTable::deleteElement(const string &phoneNumber) {
     file.seekg((position + 1) * sizeof(PhoneOwnerExtended), ios::beg);
     for (int i = position + 1; i <= getBusy(); i++) {
         file.read((char *) &phoneOwner, sizeof(PhoneOwnerExtended));
-        HashTable::changePosition(phoneOwner.phone);
+        HashTable::reducePosition(phoneOwner.phone);
         file1.write((char *) &phoneOwner, sizeof(PhoneOwnerExtended));
     }
     file.close();

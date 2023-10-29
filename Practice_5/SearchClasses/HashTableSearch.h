@@ -9,25 +9,26 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "ISearchClass.h"
 
 using namespace std;
 
-class HashTableSearch {
+class HashTableSearch : public ISearchClass {
 private:
-    struct HashTableRow {
+    struct HashTableSearchRow {
         string phone;
         int position;
         bool free;
         bool deleted;
 
-        HashTableRow(string phone, int position);
+        HashTableSearchRow(string phone, int position);
 
-        HashTableRow();
+        HashTableSearchRow();
 
         void print();
     };
 
-    HashTableRow *table;
+    HashTableSearchRow *table;
     unsigned int size;
     unsigned int busy;
 
@@ -42,11 +43,11 @@ private:
 public:
     virtual ~HashTableSearch();
 
-    HashTableSearch(unsigned int size);
+    HashTableSearch(unsigned int size = 5);
 
-    bool insert(const string &phone, int position, bool outIndexes = false);
+    bool insert(const string &phone, int position) override;
 
-    int deleteElement(const string &phone);
+    int deleteElement(const string &phone) override;
 
     void update(unsigned int sizeNew);
 
@@ -54,7 +55,7 @@ public:
 
     void exportToFile(fstream &resultFile);
 
-    int find(const string &phone);
+    int find(const string &phone) override;
 
     unsigned int getSize() const;
 
@@ -62,7 +63,7 @@ public:
 
     static unsigned int getOptimizedSize(unsigned int busy);
 
-    void reducePosition(const string& phone);
+    void reducePosition(const string& phone) override;
 };
 
 

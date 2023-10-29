@@ -12,18 +12,33 @@ using namespace std;
 
 class BinaryTree {
 protected:
-    struct Node {
+    struct NodeTree {
         string value;
-        Node *leftNode;
-        Node *rightNode;
+        int position;
+        NodeTree *leftNode;
+        NodeTree *rightNode;
 
-        ~Node();
+        NodeTree(string value, int position);
+
+        ~NodeTree();
 
         void print(int level = 0);
+
+        bool operator<(const NodeTree &rhs) const;
+
+        bool operator>(const NodeTree &rhs) const;
+
+        bool operator<=(const NodeTree &rhs) const;
+
+        bool operator>=(const NodeTree &rhs) const;
+
+        bool operator==(const NodeTree &rhs) const;
+
+        bool operator!=(const NodeTree &rhs) const;
     };
 
-    Node *root;
-    BinaryTree(Node *root);
+    NodeTree *root;
+    BinaryTree();
 
 public:
 

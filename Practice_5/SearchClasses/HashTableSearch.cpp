@@ -106,7 +106,7 @@ bool HashTableSearch::isEasy(unsigned long long int x) {
     return true;
 }
 
-void HashTableSearch::printTable() {
+void HashTableSearch::print() {
     cout << "Hash table for " << size << " elements with " << busy << " inside:" << endl;
     for (int i = 0; i < size; i++) {
         cout << setw(8) << i << ": ";

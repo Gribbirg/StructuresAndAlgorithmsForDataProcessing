@@ -14,7 +14,7 @@ public:
     virtual bool insert(const string &phone, int position) = 0;
     virtual int deleteElement(const string &phone) = 0;
     virtual int find(const string &phone) = 0;
-    virtual void reducePosition(const string &phone) = 0;
+    virtual void print() = 0;
 };
 
 

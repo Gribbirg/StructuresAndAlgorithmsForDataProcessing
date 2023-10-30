@@ -24,17 +24,9 @@ protected:
 
         void print(int level = 0);
 
-        bool operator<(const NodeTree &rhs) const;
+        void reducePositions(int positionMin);
 
-        bool operator>(const NodeTree &rhs) const;
-
-        bool operator<=(const NodeTree &rhs) const;
-
-        bool operator>=(const NodeTree &rhs) const;
-
-        bool operator==(const NodeTree &rhs) const;
-
-        bool operator!=(const NodeTree &rhs) const;
+        void del();
     };
 
     NodeTree *root;

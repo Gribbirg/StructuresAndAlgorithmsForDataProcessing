@@ -11,7 +11,13 @@
 class BinarySearchTree : public BinaryTree, public ISearchClass {
 private:
 
-    bool insert(NodeTree *node, NodeTree *nodeNew);
+    bool insert(NodeTree *node, const string& phone, int position);
+
+    int deleteElement(NodeTree *node, const string& phone);
+
+    NodeTree *cutMostRightChild(NodeTree *node);
+
+    NodeTree *findNewElement(NodeTree *node);
 
 public:
 
@@ -21,8 +27,7 @@ public:
 
     int find(const string &phone) override;
 
-    void reducePosition(const string &phone) override;
-
+    void print() override;
 };
 
 

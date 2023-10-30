@@ -23,28 +23,16 @@ BinaryTree::NodeTree::NodeTree(string value, int position) : value(std::move(val
     rightNode = nullptr;
 }
 
-bool BinaryTree::NodeTree::operator<(const BinaryTree::NodeTree &rhs) const {
-    return PhoneOwnerCut::phoneToLong(value) < PhoneOwnerCut::phoneToLong(rhs.value);
+void BinaryTree::NodeTree::reducePositions(int positionMin) {
+    if (rightNode != nullptr) rightNode->print(positionMin);
+    if (position > positionMin) position--;
+    if (leftNode != nullptr) leftNode->print(positionMin);
 }
 
-bool BinaryTree::NodeTree::operator>(const BinaryTree::NodeTree &rhs) const {
-    return rhs < *this;
-}
-
-bool BinaryTree::NodeTree::operator<=(const BinaryTree::NodeTree &rhs) const {
-    return !(rhs < *this);
-}
-
-bool BinaryTree::NodeTree::operator>=(const BinaryTree::NodeTree &rhs) const {
-    return !(*this < rhs);
-}
-
-bool BinaryTree::NodeTree::operator==(const BinaryTree::NodeTree &rhs) const {
-    return PhoneOwnerCut::phoneToLong(value) == PhoneOwnerCut::phoneToLong(rhs.value);
-}
-
-bool BinaryTree::NodeTree::operator!=(const BinaryTree::NodeTree &rhs) const {
-    return !(rhs == *this);
+void BinaryTree::NodeTree::del() {
+    leftNode = nullptr;
+    rightNode = nullptr;
+    delete this;
 }
 
 void BinaryTree::print() {

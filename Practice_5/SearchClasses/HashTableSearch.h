@@ -51,7 +51,7 @@ public:
 
     void update(unsigned int sizeNew);
 
-    void printTable();
+    void print() override;
 
     void exportToFile(fstream &resultFile);
 

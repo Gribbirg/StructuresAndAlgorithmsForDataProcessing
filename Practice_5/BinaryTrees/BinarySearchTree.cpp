@@ -3,42 +3,109 @@
 //
 
 #include "BinarySearchTree.h"
+#include "../PhoneOwnerCut.h"
 
 bool BinarySearchTree::insert(const string &phone, int position) {
     if (root == nullptr) {
         root = new NodeTree(phone, position);
         return true;
     }
-    return insert(root, new NodeTree(phone, position));
+    return insert(root, phone, position);
 }
 
 int BinarySearchTree::deleteElement(const string &phone) {
-    return 0;
+    if (root != nullptr) {
+        if (root->value == phone) {
+            NodeTree* nodeForDel = root;
+            root = findNewElement(nodeForDel);
+            if (root != nullptr)
+                root->reducePositions(nodeForDel->position);
+            return nodeForDel->position;
+        } else {
+            return deleteElement(root, phone);
+        }
+    } else {
+        return -1;
+    }
+}
+
+int BinarySearchTree::deleteElement(BinaryTree::NodeTree *node, const string &phone) {
+//    if (node == nullptr)
+//        return -1;
+
+    NodeTree *nodeForDel;
+    bool isLeft;
+
+    if (PhoneOwnerCut::phoneToLong(phone) < PhoneOwnerCut::phoneToLong(node->value)) {
+        nodeForDel = node->leftNode;
+        isLeft = true;
+    } else {
+        nodeForDel = node->rightNode;
+        isLeft = false;
+    }
+
+    if (nodeForDel == nullptr) return -1;
+
+    if (nodeForDel->value == phone) {
+        NodeTree *newChild = findNewElement(nodeForDel);
+        nodeForDel->del();
+        (isLeft)? node->leftNode = newChild : node->rightNode = newChild;
+        root->reducePositions(nodeForDel->position);
+        return nodeForDel->position;
+    } else {
+        return deleteElement(nodeForDel, phone);
+    }
+}
+
+BinaryTree::NodeTree *BinarySearchTree::findNewElement(BinaryTree::NodeTree *node) {
+    NodeTree *newChild;
+
+    if (node->leftNode != nullptr && node->leftNode != nullptr) {
+        newChild = cutMostRightChild(node->leftNode);
+        newChild->leftNode = node->leftNode;
+        newChild->rightNode = node->rightNode;
+    } else if (node->leftNode != nullptr) {
+        newChild = node->leftNode;
+    } else if (node->rightNode != nullptr) {
+        newChild = node->rightNode;
+    } else {
+        newChild = nullptr;
+    }
+    return newChild;
 }
 
 int BinarySearchTree::find(const string &phone) {
     return 0;
 }
 
-void BinarySearchTree::reducePosition(const string &phone) {
-
+void BinarySearchTree::print() {
+    BinaryTree::print();
 }
 
-bool BinarySearchTree::insert(BinaryTree::NodeTree *node, BinaryTree::NodeTree *nodeNew) {
-    if (*nodeNew < *node) {
+bool BinarySearchTree::insert(BinaryTree::NodeTree *node, const string &phone, int position) {
+    if (PhoneOwnerCut::phoneToLong(phone) < PhoneOwnerCut::phoneToLong(node->value)) {
         if (node->leftNode != nullptr)
-            return insert(node->leftNode, nodeNew);
+            return insert(node->leftNode, phone, position);
         else {
-            node->leftNode = nodeNew;
+            node->leftNode = new NodeTree(phone, position);
             return true;
         }
-    } else if (*nodeNew > *node) {
+    } else if (phone != node->value) {
         if (node->rightNode != nullptr)
-            return insert(node->rightNode, nodeNew);
+            return insert(node->rightNode, phone, position);
         else {
-            node->leftNode = nodeNew;
+            node->leftNode = new NodeTree(phone, position);
             return true;
         }
     }
     return false;
+}
+
+BinaryTree::NodeTree *BinarySearchTree::cutMostRightChild(BinaryTree::NodeTree *node) {
+    if (node->rightNode->rightNode != nullptr)
+        return cutMostRightChild(node->rightNode);
+
+    NodeTree *nodeFind = (node->rightNode);
+    node->rightNode = nodeFind->leftNode;
+    return nodeFind;
 }

@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class HashTableSearch {
+class HashTable {
 private:
     struct HashTableRow {
         string phone;
@@ -40,9 +40,9 @@ private:
     int findElement(const string& phone);
 
 public:
-    virtual ~HashTableSearch();
+    virtual ~HashTable();
 
-    HashTableSearch(unsigned int size);
+    HashTable(unsigned int size);
 
     bool insert(const string &phone, int position, bool outIndexes = false);
 

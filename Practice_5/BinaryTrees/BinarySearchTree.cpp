@@ -94,7 +94,7 @@ bool BinarySearchTree::insert(BinaryTree::NodeTree *node, const string &phone, i
         if (node->rightNode != nullptr)
             return insert(node->rightNode, phone, position);
         else {
-            node->leftNode = new NodeTree(phone, position);
+            node->rightNode = new NodeTree(phone, position);
             return true;
         }
     }

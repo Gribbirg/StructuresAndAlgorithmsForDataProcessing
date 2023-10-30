@@ -177,16 +177,18 @@ int HashTableSearch::deleteElement(const string &phone) {
         int position = table[num].position;
         if (size * 0.1 > busy)
             update(getOptimizedSize(busy / 0.75));
+        reducePosition(position);
         return position;
     }
 
     return -1;
 }
 
-void HashTableSearch::reducePosition(const string &phone) {
-    int num = findElement(phone);
-    if (num != -1)
-        table[num].position--;
+void HashTableSearch::reducePosition(int positionMin) {
+    for (int i = 0; i < size; i++) {
+        if (table[i].position > positionMin)
+            table[i].position--;
+    }
 }
 
 int HashTableSearch::findElement(const string &phone) {

@@ -40,7 +40,7 @@ HashTable::HashTableRow::HashTableRow() {
     deleted = false;
 }
 
-HashTable::HashTableSearch(unsigned int size) {
+HashTable::HashTable(unsigned int size) {
     this->size = size;
     busy = 0;
     table = new HashTableRow[size];
@@ -213,7 +213,7 @@ int HashTable::findElement(const string &phone) {
     return -1;
 }
 
-HashTable::~HashTableSearch() {
+HashTable::~HashTable() {
     delete[] table;
 }
 

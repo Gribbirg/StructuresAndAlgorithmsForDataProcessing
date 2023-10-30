@@ -63,7 +63,7 @@ public:
 
     static unsigned int getOptimizedSize(unsigned int busy);
 
-    void reducePosition(const string& phone) override;
+    void reducePosition(int positionMin);
 };
 
 

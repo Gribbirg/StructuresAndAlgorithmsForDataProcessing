@@ -14,7 +14,7 @@ BinaryTree::NodeTree::~NodeTree() {
 
 void BinaryTree::NodeTree::print(int level) {
     if (rightNode != nullptr) rightNode->print(level + 1);
-    cout << string(level * 10, ' ') << value << " in " << position << endl;
+    cout << string(level * 25, ' ') << value << " in " << position << endl;
     if (leftNode != nullptr) leftNode->print(level + 1);
 }
 
@@ -37,7 +37,11 @@ void BinaryTree::NodeTree::del() {
 
 void BinaryTree::print() {
     cout << "Binary tree:" << endl;
-    root->print();
+    if (root != nullptr) {
+        root->print();
+    } else {
+        cout << endl;
+    }
 }
 
 BinaryTree::BinaryTree() : root(nullptr) {}

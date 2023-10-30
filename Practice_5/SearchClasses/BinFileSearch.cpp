@@ -78,7 +78,6 @@ bool BinFileSearch::deleteElement(const string &phoneNumber) {
     file.seekg((position + 1) * sizeof(PhoneOwnerCut), ios::beg);
     for (int i = position + 1; i <= size; i++) {
         file.read((char *) &phoneOwner, sizeof(PhoneOwnerCut));
-        searchObject->reducePosition(phoneOwner.phone);
         file1.write((char *) &phoneOwner, sizeof(PhoneOwnerCut));
     }
     file.close();

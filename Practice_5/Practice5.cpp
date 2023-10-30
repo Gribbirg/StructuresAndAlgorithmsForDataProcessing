@@ -69,6 +69,7 @@ void Practice5::start() {
 
 
 void Practice5::withoutFile(ISearchClass *searchObject) {
+    cout << endl;
     fstream fstream1;
     int enter, i = 0;
     string phone;
@@ -86,7 +87,6 @@ void Practice5::withoutFile(ISearchClass *searchObject) {
     while (true) {
         cout << "Enter operation number or 0 for exit: ";
         cin >> enter;
-        cout << endl;
 
         switch (enter) {
 
@@ -112,7 +112,6 @@ void Practice5::withoutFile(ISearchClass *searchObject) {
             case 3:
                 cout << "Enter the phone number you are looking for (format: +7 (XXX) XXX-XX-XX): ";
                 while (getline(cin, phone) && phone.empty());
-                cout << endl;
 
                 enter = searchObject->find(phone);
                 if (enter == -1)
@@ -130,7 +129,6 @@ void Practice5::withoutFile(ISearchClass *searchObject) {
 
                 if (phone == "0") phone = PhoneOwnerCut::getRandomPhoneNumber(i);
 
-                cout << endl;
                 if (searchObject->insert(phone, i)) {
                     cout << endl << "Phone " << phone << " is now in the table!" << endl;
                     i++;
@@ -158,7 +156,6 @@ void Practice5::withoutFile(ISearchClass *searchObject) {
                 cout << "Enter the phone number you want to delete (format: +7 (XXX) XXX-XX-XX): ";
                 while (getline(cin, phone) && phone.empty());
 
-                cout << endl;
                 if (searchObject->deleteElement(phone) != -1)
                     cout << "Phone " << phone << " was deleted!" << endl;
                 else
@@ -169,7 +166,7 @@ void Practice5::withoutFile(ISearchClass *searchObject) {
             default:
                 cout << "Error. Try again!" << endl;
         }
-        cout << endl << endl;
+        cout << endl;
     }
 }
 

@@ -19,6 +19,8 @@ private:
 
     NodeTree *findNewElement(NodeTree *node);
 
+    int find(NodeTree *node, unsigned long long int phone);
+
 public:
 
     bool insert(const string &phone, int position) override;

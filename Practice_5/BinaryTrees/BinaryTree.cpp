@@ -24,9 +24,9 @@ BinaryTree::NodeTree::NodeTree(string value, int position) : value(std::move(val
 }
 
 void BinaryTree::NodeTree::reducePositions(int positionMin) {
-    if (rightNode != nullptr) rightNode->print(positionMin);
+    if (rightNode != nullptr) rightNode->reducePositions(positionMin);
     if (position > positionMin) position--;
-    if (leftNode != nullptr) leftNode->print(positionMin);
+    if (leftNode != nullptr) leftNode->reducePositions(positionMin);
 }
 
 void BinaryTree::NodeTree::del() {

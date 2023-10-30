@@ -30,8 +30,6 @@ int BinarySearchTree::deleteElement(const string &phone) {
 }
 
 int BinarySearchTree::deleteElement(BinaryTree::NodeTree *node, const string &phone) {
-//    if (node == nullptr)
-//        return -1;
 
     NodeTree *nodeForDel;
     bool isLeft;
@@ -61,7 +59,12 @@ BinaryTree::NodeTree *BinarySearchTree::findNewElement(BinaryTree::NodeTree *nod
     NodeTree *newChild;
 
     if (node->leftNode != nullptr && node->leftNode != nullptr) {
-        newChild = cutMostRightChild(node->leftNode);
+        if (node->leftNode->rightNode != nullptr)
+            newChild = cutMostRightChild(node->leftNode);
+        else {
+            newChild = node->leftNode;
+            node->leftNode = newChild->leftNode;
+        }
         newChild->leftNode = node->leftNode;
         newChild->rightNode = node->rightNode;
     } else if (node->leftNode != nullptr) {
@@ -75,7 +78,16 @@ BinaryTree::NodeTree *BinarySearchTree::findNewElement(BinaryTree::NodeTree *nod
 }
 
 int BinarySearchTree::find(const string &phone) {
-    return 0;
+    return find(root, PhoneOwnerCut::phoneToLong(phone));
+}
+
+int BinarySearchTree::find(BinaryTree::NodeTree *node, unsigned long long int phone) {
+    if (node == nullptr) return -1;
+
+    unsigned long long int currentVal = PhoneOwnerCut::phoneToLong(node->value);
+    if (phone < currentVal) return find(node->leftNode, phone);
+    if (phone > currentVal) return find(node->rightNode, phone);
+    return node->position;
 }
 
 void BinarySearchTree::print() {
@@ -105,7 +117,7 @@ BinaryTree::NodeTree *BinarySearchTree::cutMostRightChild(BinaryTree::NodeTree *
     if (node->rightNode->rightNode != nullptr)
         return cutMostRightChild(node->rightNode);
 
-    NodeTree *nodeFind = (node->rightNode);
+    NodeTree *nodeFind = node->rightNode;
     node->rightNode = nodeFind->leftNode;
     return nodeFind;
 }

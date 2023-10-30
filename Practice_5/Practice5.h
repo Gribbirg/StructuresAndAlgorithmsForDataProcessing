@@ -16,6 +16,11 @@ private:
     template<class T>
     static void withFile();
 
+    static void comparison();
+
+    template<class T>
+    static void test(const vector<string>& phones);
+
 public:
     static void start();
 };

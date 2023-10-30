@@ -11,6 +11,9 @@
 #include <iostream>
 #include <cstring>
 #include <string>
+#include <chrono>
+#include <iomanip>
+#include <random>
 
 using namespace std;
 
@@ -25,7 +28,8 @@ void Practice5::start() {
              << "0 - exit;" << endl
              << "1 - binary search tree;" << endl
              << "2 - splay binary search tree;" << endl
-             << "3 - hash table." << endl;
+             << "3 - hash table;" << endl
+             << "9 - comparison." << endl;
         cout << "What to use?: ";
         cin >> enter;
         cout << endl;
@@ -47,17 +51,17 @@ void Practice5::start() {
 
                 break;
 
-        case 2:
-            cout << "Work with splay binary tree." << endl;
-            cout << "Use bin file? (1 - yes, 0 - no): ";
-            cin >> enter;
+            case 2:
+                cout << "Work with splay binary tree." << endl;
+                cout << "Use bin file? (1 - yes, 0 - no): ";
+                cin >> enter;
 
-            if (enter == 1) {
-                withFile<SplayTree>();
-            } else {
-                withoutFile<SplayTree>();
-            }
-            break;
+                if (enter == 1) {
+                    withFile<SplayTree>();
+                } else {
+                    withoutFile<SplayTree>();
+                }
+                break;
 
             case 3:
                 cout << "Work with hash table." << endl;
@@ -69,6 +73,10 @@ void Practice5::start() {
                 } else {
                     withoutFile<HashTableSearch>();
                 }
+                break;
+
+            case 9:
+                comparison();
                 break;
 
             default:
@@ -189,7 +197,7 @@ void Practice5::withFile() {
     cin >> enter;
     BinFileSearch *binFile;
     if (enter == 1) {
-        cout << "Enter from file size: ";
+        cout << "Enter file size: ";
         cin >> enter;
         binFile = new BinFileSearch(new T(), "bin.dat", enter);
     } else {
@@ -219,7 +227,7 @@ void Practice5::withFile() {
         switch (enter) {
 
             case 0:
-                cout << "Exit this mode." << endl;
+                cout << "Exit from this mode." << endl;
                 delete binFile;
                 return;
 
@@ -315,4 +323,64 @@ void Practice5::withFile() {
         }
         cout << endl;
     }
+}
+
+void Practice5::comparison() {
+    int enter, count;
+    cout << "How many elements?: ";
+    cin >> enter;
+    cout << "How many elements you want to find?: ";
+    cin >> count;
+    vector<string> phoneToSearch;
+
+    auto binFileWorkCut = new BinFileWorkCut("bin.dat");
+    binFileWorkCut->fillBinFile(enter);
+
+    if (count < 30)
+        cout << "Phones for search:";
+    for (int i = 0; i < count; i++) {
+//        srand((unsigned) time(nullptr) + i * rand());
+        phoneToSearch.push_back(binFileWorkCut->getElement(rand() % enter).phone);
+        if (count < 30)
+            cout << " " << phoneToSearch[i];
+    }
+    if (count < 30)
+        cout << endl;
+    cout << endl;
+    delete binFileWorkCut;
+
+    shuffle(phoneToSearch.begin(), phoneToSearch.end(), std::mt19937(std::random_device()()));
+
+    cout << "Binary search tree:" << endl;
+    test<BinarySearchTree>(phoneToSearch);
+    cout << endl;
+    cout << "Splay binary tree:" << endl;
+    test<SplayTree>(phoneToSearch);
+    cout << endl;
+    cout << "Hash table:" << endl;
+    test<HashTableSearch>(phoneToSearch);
+    cout << endl;
+}
+
+template<class T>
+void Practice5::test(const vector<string> &phones) {
+    auto startTime = chrono::steady_clock::now();
+    auto binFile = new BinFileSearch(new T(), "bin.dat");
+    auto endTime = chrono::steady_clock::now();
+    cout << "Init time: " << chrono::duration<double, std::chrono::seconds::period>(endTime - startTime).count()
+         << " seconds" << endl;
+    double sum = 0.0;
+    PhoneOwnerCut phoneOwner;
+    for (const string &phone: phones) {
+        startTime = chrono::steady_clock::now();
+        phoneOwner = binFile->find(phone);
+        endTime = chrono::steady_clock::now();
+        if (phones.size() < 30)
+            cout << left << setw(125) << phoneOwner.to_string()
+                 << " Search time: " << chrono::duration<double, milli>(endTime - startTime).count()
+                 << " milliseconds" << endl;
+        sum += chrono::duration<double, milli>(endTime - startTime).count();
+    }
+    cout << "Average time: " << sum / (double) phones.size() << " milliseconds" << endl;
+    delete binFile;
 }

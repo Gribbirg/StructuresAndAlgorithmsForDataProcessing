@@ -44,6 +44,7 @@ int SplayTree::deleteElement(const string &phone) {
             root = splay(root, PhoneOwnerCut::phoneToLong(phone));
             root->rightNode = node;
         }
+        root->reducePositions(position);
     }
     return position;
 }
@@ -116,4 +117,8 @@ BinaryTree::NodeTree *SplayTree::splay(NodeTree *father, unsigned long long int 
         return (father->rightNode == nullptr) ? father : leftRotation(father);
 
     }
+}
+
+SplayTree::~SplayTree() {
+    delete root;
 }

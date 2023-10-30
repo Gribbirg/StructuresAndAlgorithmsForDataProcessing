@@ -6,7 +6,6 @@
 
 BinFileSearch::BinFileSearch(ISearchClass *searchObject, string fileName) : BinFileWorkCut(std::move(fileName)),
                                                                             searchObject(searchObject) {
-    BinFileWorkCut::fillBinFromEnter();
     dataToSearchObject();
 }
 

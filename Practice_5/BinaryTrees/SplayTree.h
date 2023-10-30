@@ -24,6 +24,8 @@ public:
     int find(const string &phone) override;
 
     void print() override;
+
+    ~SplayTree() override;
 };
 
 

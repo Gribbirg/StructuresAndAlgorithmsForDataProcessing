@@ -8,40 +8,43 @@
 #include "SearchClasses/HashTableSearch.h"
 #include "SearchClasses/BinFileSearch.h"
 #include <iostream>
-#include <fstream>
 #include <cstring>
 #include <string>
 
 using namespace std;
 
 void Practice5::start() {
-    cout << "Practice 3" << endl;
+    cout << "Practice 5" << endl;
     cout << endl;
 
     unsigned int enter;
 
-    cout << "Search structures:" << endl
-         << "1 - binary search tree;" << endl
-         << "2 - split binary search tree;" << endl
-         << "3 - hash table." << endl;
-    cout << "What to use?: ";
-    cin >> enter;
-    cout << endl;
+    while (true) {
+        cout << "Search structures:" << endl
+             << "0 - exit;" << endl
+             << "1 - binary search tree;" << endl
+             << "2 - split binary search tree;" << endl
+             << "3 - hash table." << endl;
+        cout << "What to use?: ";
+        cin >> enter;
+        cout << endl;
+        switch (enter) {
+            case 0:
+                cout << "Exit from practice 5." << endl;
+                return;
 
-    switch (enter) {
+            case 1:
+                cout << "Work with binary search tree." << endl;
+                cout << "Use bin file? (1 - yes, 0 - no): ";
+                cin >> enter;
 
-        case 1:
-            cout << "Work with binary search tree" << endl;
-            cout << "Use bin file? (1 - yes, 0 - no): ";
-            cin >> enter;
+                if (enter == 1) {
+                    withFile<BinarySearchTree>();
+                } else {
+                    withoutFile<BinarySearchTree>();
+                }
 
-            if (enter == 1) {
-                withFile<BinarySearchTree>();
-            } else {
-                withoutFile<BinarySearchTree>();
-            }
-
-            break;
+                break;
 
 //        case 2:
 //            cout << "Work with binary search tree" << endl;
@@ -55,17 +58,22 @@ void Practice5::start() {
 //            }
 //            break;
 
-        case 3:
-            cout << "Work with hash table" << endl;
-            cout << "Use bin file? (1 - yes, 0 - no): " << endl;
-            cin >> enter;
+            case 3:
+                cout << "Work with hash table." << endl;
+                cout << "Use bin file? (1 - yes, 0 - no): ";
+                cin >> enter;
 
-            if (enter == 1) {
-                withFile<HashTableSearch>();
-            } else {
-                withoutFile<HashTableSearch>();
-            }
-            break;
+                if (enter == 1) {
+                    withFile<HashTableSearch>();
+                } else {
+                    withoutFile<HashTableSearch>();
+                }
+                break;
+
+            default:
+                cout << "Error. Try again!" << endl;
+        }
+        cout << endl;
     }
 }
 
@@ -93,7 +101,7 @@ void Practice5::withoutFile() {
         switch (enter) {
 
             case 0:
-                cout << "Exit from practice 3" << endl;
+                cout << "Exit from this mode." << endl;
                 delete searchObject;
                 return;
 
@@ -175,14 +183,12 @@ void Practice5::withoutFile() {
 
 template<class T>
 void Practice5::withFile() {
-//    fstream fstream1;
-//    fstream fstream2;
     int enter;
     cout << "Create new file? (1 - yes, 0 - no): ";
     cin >> enter;
     BinFileSearch *binFile;
     if (enter == 1) {
-        cout << "Enter file size: ";
+        cout << "Enter from file size: ";
         cin >> enter;
         binFile = new BinFileSearch(new T(), "bin.dat", enter);
     } else {
@@ -208,12 +214,11 @@ void Practice5::withFile() {
     while (true) {
         cout << "Enter operation number or 0 for exit: ";
         cin >> enter;
-        cout << endl;
 
         switch (enter) {
 
             case 0:
-                cout << "Exit from exercise 3" << endl;
+                cout << "Exit this mode." << endl;
                 delete binFile;
                 return;
 
@@ -240,7 +245,6 @@ void Practice5::withFile() {
             case 4:
                 cout << "Enter the phone number you are looking for (format: +7 (XXX) XXX-XX-XX): ";
                 while (getline(cin, phone) && phone.empty());
-                cout << endl;
 
                 phoneOwner = binFile->find(phone);
                 if (phoneOwner.phone[0] == 0)
@@ -256,7 +260,6 @@ void Practice5::withFile() {
                 cout
                         << "Enter the phone number you want to insert (format: +7 (XXX) XXX-XX-XX) or 0 to insert random: ";
                 while (getline(cin, phone) && phone.empty());
-                cout << endl;
 
                 if (phone == "0") {
                     do {
@@ -269,7 +272,7 @@ void Practice5::withFile() {
 
                     cout << "Enter the address: ";
                     while (getline(cin, s) && s.empty());
-                    cout << endl;
+
                     strcpy(phoneOwner.address, s.c_str());
                     s = "";
 
@@ -291,7 +294,6 @@ void Practice5::withFile() {
                     while (!binFile->insert(PhoneOwnerCut::getRandomOwner((int) binFile->getSize())));
                 }
                 cout << "Done!" << endl;
-
                 break;
 
             case 7:
@@ -299,7 +301,6 @@ void Practice5::withFile() {
                 cout << "Enter the phone number you want to delete (format: +7 (XXX) XXX-XX-XX): ";
                 while (getline(cin, phone) && phone.empty());
 
-                cout << endl;
                 if (binFile->deleteElement(phone))
                     cout << "Phone " << phone << " was deleted!" << endl;
                 else

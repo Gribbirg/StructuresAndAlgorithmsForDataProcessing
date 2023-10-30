@@ -99,3 +99,7 @@ unsigned int BinFileSearch::getSize() const {
     return size;
 }
 
+BinFileSearch::~BinFileSearch() {
+    delete searchObject;
+}
+

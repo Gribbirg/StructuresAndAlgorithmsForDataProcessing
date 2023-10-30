@@ -26,6 +26,8 @@ public:
 
     BinFileSearch(ISearchClass *searchObject, string fileName, int newFileSize);
 
+    virtual ~BinFileSearch();
+
     bool insert(PhoneOwnerCut phoneOwner);
 
     bool deleteElement(const string &phone);

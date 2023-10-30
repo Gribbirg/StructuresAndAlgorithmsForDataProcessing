@@ -8,6 +8,10 @@
 #include "../BinFileWorkCut.h"
 #include "ISearchClass.h"
 #include "../PhoneOwnerCut.h"
+#include <string>
+
+using namespace std;
+
 
 class BinFileSearch : public BinFileWorkCut {
 private:
@@ -16,17 +20,21 @@ private:
     unsigned int size;
 
     void dataToSearchObject();
-public:
 
+public:
     BinFileSearch(ISearchClass *searchObject, string fileName);
 
     BinFileSearch(ISearchClass *searchObject, string fileName, int newFileSize);
 
-    bool insert(PhoneOwnerCut phoneOwner) ;
+    bool insert(PhoneOwnerCut phoneOwner);
 
     bool deleteElement(const string &phone);
 
     PhoneOwnerCut find(const string &phone);
+
+    void printStruct();
+
+    unsigned int getSize() const;
 };
 
 

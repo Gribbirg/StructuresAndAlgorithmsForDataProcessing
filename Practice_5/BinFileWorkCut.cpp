@@ -105,12 +105,10 @@ void BinFileWorkCut::fillBinFromEnter() {
     PhoneOwnerCut phoneOwner{};
     string phone;
     string address;
-    string fullName;
 
     while (!file1.eof()) {
         getline(file1, phone);
         getline(file1, address);
-        getline(file1, fullName);
 
         strcpy(phoneOwner.phone, phone.c_str());
         strcpy(phoneOwner.address, address.c_str());

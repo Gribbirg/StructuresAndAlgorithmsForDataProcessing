@@ -6,11 +6,16 @@
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_PRACTICE5_H
 
 #include "SearchClasses/ISearchClass.h"
+#include "SearchClasses/BinFileSearch.h"
 
 class Practice5 {
 private:
-    static void withoutFile(ISearchClass *searchObject);
-    static void withFile(ISearchClass *searchObject);
+    template<class T>
+    static void withoutFile();
+
+    template<class T>
+    static void withFile();
+
 public:
     static void start();
 };

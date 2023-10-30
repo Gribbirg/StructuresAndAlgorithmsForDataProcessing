@@ -15,6 +15,7 @@ public:
     virtual int deleteElement(const string &phone) = 0;
     virtual int find(const string &phone) = 0;
     virtual void print() = 0;
+    virtual ~ISearchClass() = default;
 };
 
 

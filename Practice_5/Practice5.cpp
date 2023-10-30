@@ -6,8 +6,11 @@
 #include "PhoneOwnerCut.h"
 #include "BinaryTrees/BinarySearchTree.h"
 #include "SearchClasses/HashTableSearch.h"
+#include "SearchClasses/BinFileSearch.h"
 #include <iostream>
 #include <fstream>
+#include <cstring>
+#include <string>
 
 using namespace std;
 
@@ -16,8 +19,6 @@ void Practice5::start() {
     cout << endl;
 
     unsigned int enter;
-    fstream fstream1;
-    fstream fstream2;
 
     cout << "Search structures:" << endl
          << "1 - binary search tree;" << endl
@@ -35,9 +36,9 @@ void Practice5::start() {
             cin >> enter;
 
             if (enter == 1) {
-                withFile(new BinarySearchTree());
+                withFile<BinarySearchTree>();
             } else {
-                withoutFile(new BinarySearchTree());
+                withoutFile<BinarySearchTree>();
             }
 
             break;
@@ -60,19 +61,20 @@ void Practice5::start() {
             cin >> enter;
 
             if (enter == 1) {
-                withFile(new HashTableSearch());
+                withFile<HashTableSearch>();
             } else {
-                withoutFile(new HashTableSearch());
+                withoutFile<HashTableSearch>();
             }
+            break;
     }
 }
 
-
-void Practice5::withoutFile(ISearchClass *searchObject) {
+template<class T>
+void Practice5::withoutFile() {
     cout << endl;
-    fstream fstream1;
     int enter, i = 0;
     string phone;
+    ISearchClass *searchObject = new T();
 
     cout << "Information about operations numbers:" << endl
          << "0 - exit from without file mode;" << endl
@@ -92,6 +94,7 @@ void Practice5::withoutFile(ISearchClass *searchObject) {
 
             case 0:
                 cout << "Exit from practice 3" << endl;
+                delete searchObject;
                 return;
 
             case 1:
@@ -170,6 +173,144 @@ void Practice5::withoutFile(ISearchClass *searchObject) {
     }
 }
 
-void Practice5::withFile(ISearchClass *searchObject) {
+template<class T>
+void Practice5::withFile() {
+//    fstream fstream1;
+//    fstream fstream2;
+    int enter;
+    cout << "Create new file? (1 - yes, 0 - no): ";
+    cin >> enter;
+    BinFileSearch *binFile;
+    if (enter == 1) {
+        cout << "Enter file size: ";
+        cin >> enter;
+        binFile = new BinFileSearch(new T(), "bin.dat", enter);
+    } else {
+        binFile = new BinFileSearch(new T(), "bin.dat");
+    }
+    cout << endl;
 
+    string phone;
+    string s;
+    PhoneOwnerCut phoneOwner;
+
+    cout << "Information about operations numbers:" << endl
+         << "0 - exit from practice 5;" << endl
+         << "1 - print operations info;" << endl
+         << "2 - print struct;" << endl
+         << "3 - print data from bin file;" << endl
+         << "4 - find element;" << endl
+         << "5 - insert element;" << endl
+         << "6 - insert many random elements;" << endl
+         << "7 - delete element." << endl
+         << endl;
+
+    while (true) {
+        cout << "Enter operation number or 0 for exit: ";
+        cin >> enter;
+        cout << endl;
+
+        switch (enter) {
+
+            case 0:
+                cout << "Exit from exercise 3" << endl;
+                delete binFile;
+                return;
+
+            case 1:
+                cout << "Information about operations numbers:" << endl
+                     << "0 - exit from practice 5;" << endl
+                     << "1 - print operations info;" << endl
+                     << "2 - print struct;" << endl
+                     << "3 - print data from bin file;" << endl
+                     << "4 - find element;" << endl
+                     << "5 - insert element;" << endl
+                     << "6 - insert many random elements;" << endl
+                     << "7 - delete element." << endl;
+                break;
+
+            case 2:
+                binFile->printStruct();
+                break;
+
+            case 3:
+                binFile->readAll();
+                break;
+
+            case 4:
+                cout << "Enter the phone number you are looking for (format: +7 (XXX) XXX-XX-XX): ";
+                while (getline(cin, phone) && phone.empty());
+                cout << endl;
+
+                phoneOwner = binFile->find(phone);
+                if (phoneOwner.phone[0] == 0)
+                    cout << "The phone " << phone << " isn't in the file!" << endl;
+                else
+                    cout << phoneOwner.to_string() << endl;
+
+                phone = "";
+                phoneOwner = PhoneOwnerCut();
+                break;
+
+            case 5:
+                cout
+                        << "Enter the phone number you want to insert (format: +7 (XXX) XXX-XX-XX) or 0 to insert random: ";
+                while (getline(cin, phone) && phone.empty());
+                cout << endl;
+
+                if (phone == "0") {
+                    do {
+                        phoneOwner = PhoneOwnerCut::getRandomOwner((int) binFile->getSize());
+                    } while (!binFile->insert(phoneOwner));
+                    cout << "Phone " << phoneOwner.phone << " is now in the bin file!" << endl;
+                } else {
+
+                    strcpy(phoneOwner.phone, phone.c_str());
+
+                    cout << "Enter the address: ";
+                    while (getline(cin, s) && s.empty());
+                    cout << endl;
+                    strcpy(phoneOwner.address, s.c_str());
+                    s = "";
+
+
+                    if (binFile->insert(phoneOwner)) {
+                        cout << "Phone " << phone << " is now in the bin file!" << endl;
+                    } else
+                        cout << "Phone " << phone << " is already in the bin file!" << endl;
+                }
+                phone = "";
+                break;
+
+            case 6:
+
+                cout << "How many elements you want to insert: ";
+                cin >> enter;
+
+                for (int j = 0; j < enter; j++) {
+                    while (!binFile->insert(PhoneOwnerCut::getRandomOwner((int) binFile->getSize())));
+                }
+                cout << "Done!" << endl;
+
+                break;
+
+            case 7:
+
+                cout << "Enter the phone number you want to delete (format: +7 (XXX) XXX-XX-XX): ";
+                while (getline(cin, phone) && phone.empty());
+
+                cout << endl;
+                if (binFile->deleteElement(phone))
+                    cout << "Phone " << phone << " was deleted!" << endl;
+                else
+                    cout << "Phone " << phone << " isn't in the table!" << endl;
+
+                break;
+
+
+            default:
+                cout << "Error. Try again!" << endl;
+        }
+        cout << endl;
+    }
 }

@@ -4,12 +4,14 @@
 
 #include "BinFileSearch.h"
 
-BinFileSearch::BinFileSearch(ISearchClass *searchObject, string fileName): BinFileWorkCut(std::move(fileName)), searchObject(searchObject) {
+BinFileSearch::BinFileSearch(ISearchClass *searchObject, string fileName) : BinFileWorkCut(std::move(fileName)),
+                                                                            searchObject(searchObject) {
     BinFileWorkCut::fillBinFromEnter();
     dataToSearchObject();
 }
 
-BinFileSearch::BinFileSearch(ISearchClass *searchObject, string fileName, int newFileSize) : BinFileWorkCut(std::move(fileName)), searchObject(searchObject) {
+BinFileSearch::BinFileSearch(ISearchClass *searchObject, string fileName, int newFileSize) :
+        BinFileWorkCut(std::move(fileName)), searchObject(searchObject) {
     fillBinFile(newFileSize);
     dataToSearchObject();
 }
@@ -29,12 +31,11 @@ void BinFileSearch::dataToSearchObject() {
     size = 0;
     while (!file.eof()) {
         if (!string(phoneOwner.phone).empty()) {
-            searchObject->insert(phoneOwner.phone, (int)size);
+            searchObject->insert(phoneOwner.phone, (int) size);
             size++;
         }
         file.read((char *) &phoneOwner, sizeof(PhoneOwnerCut));
     }
-    size++;
     file.close();
 }
 
@@ -45,7 +46,7 @@ PhoneOwnerCut BinFileSearch::find(const string &phone) {
 
 bool BinFileSearch::insert(PhoneOwnerCut phoneOwner) {
 
-    if (searchObject->insert(phoneOwner.phone, (int)size)) {
+    if (searchObject->insert(phoneOwner.phone, (int) size)) {
         BinFileWorkCut::insert(phoneOwner, size);
         size++;
         return true;
@@ -76,7 +77,7 @@ bool BinFileSearch::deleteElement(const string &phoneNumber) {
         file1.write((char *) &phoneOwner, sizeof(PhoneOwnerCut));
     }
     file.seekg((position + 1) * sizeof(PhoneOwnerCut), ios::beg);
-    for (int i = position + 1; i <= size; i++) {
+    for (int i = position + 1; i < size; i++) {
         file.read((char *) &phoneOwner, sizeof(PhoneOwnerCut));
         file1.write((char *) &phoneOwner, sizeof(PhoneOwnerCut));
     }
@@ -85,6 +86,16 @@ bool BinFileSearch::deleteElement(const string &phoneNumber) {
 
     remove(fileName.c_str());
     rename(("copy_" + fileName).c_str(), fileName.c_str());
+    size--;
 
     return true;
 }
+
+void BinFileSearch::printStruct() {
+    searchObject->print();
+}
+
+unsigned int BinFileSearch::getSize() const {
+    return size;
+}
+

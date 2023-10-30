@@ -121,3 +121,7 @@ BinaryTree::NodeTree *BinarySearchTree::cutMostRightChild(BinaryTree::NodeTree *
     node->rightNode = nodeFind->leftNode;
     return nodeFind;
 }
+
+BinarySearchTree::~BinarySearchTree() {
+    delete root;
+}

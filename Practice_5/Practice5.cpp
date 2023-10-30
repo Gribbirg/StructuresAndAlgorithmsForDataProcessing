@@ -5,6 +5,7 @@
 #include "Practice5.h"
 #include "PhoneOwnerCut.h"
 #include "BinaryTrees/BinarySearchTree.h"
+#include "BinaryTrees/SplayTree.h"
 #include "SearchClasses/HashTableSearch.h"
 #include "SearchClasses/BinFileSearch.h"
 #include <iostream>
@@ -23,7 +24,7 @@ void Practice5::start() {
         cout << "Search structures:" << endl
              << "0 - exit;" << endl
              << "1 - binary search tree;" << endl
-             << "2 - split binary search tree;" << endl
+             << "2 - splay binary search tree;" << endl
              << "3 - hash table." << endl;
         cout << "What to use?: ";
         cin >> enter;
@@ -46,17 +47,17 @@ void Practice5::start() {
 
                 break;
 
-//        case 2:
-//            cout << "Work with binary search tree" << endl;
-//            cout << "Use bin file? (1 - yes, 0 - no): " << endl;
-//            cin >> enter;
-//
-//            if (enter == 1) {
-//                withFile(new BinarySearchTree());
-//            } else {
-//                withoutFile(new BinarySearchTree());
-//            }
-//            break;
+        case 2:
+            cout << "Work with splay binary tree." << endl;
+            cout << "Use bin file? (1 - yes, 0 - no): ";
+            cin >> enter;
+
+            if (enter == 1) {
+                withFile<SplayTree>();
+            } else {
+                withoutFile<SplayTree>();
+            }
+            break;
 
             case 3:
                 cout << "Work with hash table." << endl;
@@ -141,7 +142,7 @@ void Practice5::withoutFile() {
                 if (phone == "0") phone = PhoneOwnerCut::getRandomPhoneNumber(i);
 
                 if (searchObject->insert(phone, i)) {
-                    cout << endl << "Phone " << phone << " is now in the table!" << endl;
+                    cout << "Phone " << phone << " is now in the table!" << endl;
                     i++;
                 } else
                     cout << "Phone " << phone << " is already in the table!" << endl;

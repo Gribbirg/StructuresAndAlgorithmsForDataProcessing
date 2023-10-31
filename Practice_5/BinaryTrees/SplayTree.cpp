@@ -37,9 +37,16 @@ bool SplayTree::insert(const string &phone, int position) {
 int SplayTree::deleteElement(const string &phone) {
     int position = find(phone);
     if (position != -1) {
-        if (root->leftNode == nullptr) {
+        if (root->leftNode == nullptr && root->rightNode == nullptr) {
+            root = nullptr;
+        }
+        else if (root->leftNode == nullptr) {
             root = root->rightNode;
-        } else {
+        } else if (root->rightNode == nullptr){
+            root = root->leftNode;
+        }
+
+        else {
             NodeTree *node = root->rightNode;
             root = root->leftNode;
             root = splay(root, PhoneOwnerCut::phoneToLong(phone));

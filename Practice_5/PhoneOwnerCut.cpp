@@ -9,9 +9,9 @@
 
 PhoneOwnerCut::PhoneOwnerCut() {}
 
-PhoneOwnerCut::PhoneOwnerCut(const string &phone, int i) {
+PhoneOwnerCut::PhoneOwnerCut(const string &phone) {
     strcpy(this->phone, phone.c_str());
-    strcpy(this->address, PhoneOwnerCut::getRandomAddress(i).c_str());
+    strcpy(this->address, PhoneOwnerCut::getRandomAddress().c_str());
 }
 
 PhoneOwnerCut::PhoneOwnerCut(const string &phone, const string &address) {
@@ -19,8 +19,8 @@ PhoneOwnerCut::PhoneOwnerCut(const string &phone, const string &address) {
     strcpy(this->address, address.c_str());
 }
 
-PhoneOwnerCut PhoneOwnerCut::getRandomOwner(int i) {
-    return {getRandomPhoneNumber(i), getRandomAddress(i)};
+PhoneOwnerCut PhoneOwnerCut::getRandomOwner() {
+    return {getRandomPhoneNumber(), getRandomAddress()};
 }
 
 string PhoneOwnerCut::to_string() {
@@ -42,23 +42,15 @@ unsigned long long int PhoneOwnerCut::phoneToLong(string phone) {
                         }));
 }
 
-int PhoneOwnerCut::getRandom(unsigned int i) {
-    srand((unsigned) (time(nullptr) + i));
-    return rand();
+string PhoneOwnerCut::getRandomNum(int maxValue) {
+    return std::to_string(rand() % maxValue);
 }
 
-string PhoneOwnerCut::getRandomPhoneNumber(int i) {
-    string ans;
-    int rand = getRandom(i << 0);
-    ans += "+7 (" + std::to_string(rand % 10) + std::to_string(rand % 100 / 10) + std::to_string(rand % 1000 / 100) +
-           ") ";
-    rand = getRandom(i << 1);
-    ans += std::to_string(rand % 10) + std::to_string(rand % 100 / 10) + std::to_string(rand % 1000 / 100) + "-";
-    rand = getRandom(i << 2);
-    ans += std::to_string(rand % 3) + std::to_string(rand % 100 / 10) + "-";
-    rand = getRandom(i << 3);
-    ans += std::to_string(rand % 10) + std::to_string(rand % 100 / 10);
-    return ans;
+string PhoneOwnerCut::getRandomPhoneNumber() {
+    return "+7 (" + getRandomNum(10) + getRandomNum(10) + getRandomNum(10) + ") "
+           + getRandomNum(10) + getRandomNum(10) + getRandomNum(10)
+           + "-" + getRandomNum(10) + getRandomNum(10) + "-"
+           + getRandomNum(10) + getRandomNum(10);
 }
 
 const string streets[] = {
@@ -75,15 +67,15 @@ const string streets[] = {
         "Mushroom street",
         "Elevatorskaya street",
         "Shkebedi street",
-        "The street after SiAOD",
+        "The street named after SiAOD",
         "Petyxovskay street",
         "Han street"
 };
 const unsigned int streetsSize = 16;
 
-string PhoneOwnerCut::getRandomAddress(int i) {
-    return streets[getRandom(i * 8) % streetsSize] + " h. " + std::to_string(getRandom(i * 88) % 99 + 1) + " a. " +
-           std::to_string(getRandom(i * 888) % 99 + 1);
+string PhoneOwnerCut::getRandomAddress() {
+    return streets[rand() % streetsSize] + " h. " + std::to_string(rand() % 99 + 1) + " a. " +
+           std::to_string(rand() % 99 + 1);
 }
 
 

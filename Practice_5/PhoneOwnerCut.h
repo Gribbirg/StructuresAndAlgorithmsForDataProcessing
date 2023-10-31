@@ -16,21 +16,21 @@ struct PhoneOwnerCut {
 
     static unsigned long long int phoneToLong(string phone);
 
-    static string getRandomPhoneNumber(int i);
+    static string getRandomPhoneNumber();
 
-    static string getRandomAddress(int i);
+    static string getRandomAddress();
 
-    static PhoneOwnerCut getRandomOwner(int i);
+    static PhoneOwnerCut getRandomOwner();
 
-private:
-    static int getRandom(unsigned int i);
-
-public:
     PhoneOwnerCut();
 
-    PhoneOwnerCut(const string& phone, int i);
+    PhoneOwnerCut(const string& phone);
 
     PhoneOwnerCut(const string& phone, const string& address);
+
+private:
+    static string getRandomNum(int maxValue);
+
 };
 
 

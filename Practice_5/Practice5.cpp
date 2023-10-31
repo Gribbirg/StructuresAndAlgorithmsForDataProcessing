@@ -147,7 +147,7 @@ void Practice5::withoutFile() {
                         << "Enter the phone number you want to insert (format: +7 (XXX) XXX-XX-XX) or 0 to insert random: ";
                 while (getline(cin, phone) && phone.empty());
 
-                if (phone == "0") phone = PhoneOwnerCut::getRandomPhoneNumber(i);
+                if (phone == "0") phone = PhoneOwnerCut::getRandomPhoneNumber();
 
                 if (searchObject->insert(phone, i)) {
                     cout << "Phone " << phone << " is now in the table!" << endl;
@@ -163,7 +163,7 @@ void Practice5::withoutFile() {
                 cin >> enter;
 
                 for (int j = 0; j < enter; j++) {
-                    while (!searchObject->insert(PhoneOwnerCut::getRandomPhoneNumber(i), i))
+                    while (!searchObject->insert(PhoneOwnerCut::getRandomPhoneNumber(), i))
                         i++;
                     i++;
                 }
@@ -272,7 +272,7 @@ void Practice5::withFile() {
 
                 if (phone == "0") {
                     do {
-                        phoneOwner = PhoneOwnerCut::getRandomOwner((int) binFile->getSize());
+                        phoneOwner = PhoneOwnerCut::getRandomOwner();
                     } while (!binFile->insert(phoneOwner));
                     cout << "Phone " << phoneOwner.phone << " is now in the bin file!" << endl;
                 } else {
@@ -300,7 +300,7 @@ void Practice5::withFile() {
                 cin >> enter;
 
                 for (int j = 0; j < enter; j++) {
-                    while (!binFile->insert(PhoneOwnerCut::getRandomOwner((int) binFile->getSize())));
+                    while (!binFile->insert(PhoneOwnerCut::getRandomOwner()));
                 }
                 cout << "Done!" << endl;
                 break;

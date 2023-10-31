@@ -16,10 +16,10 @@ void BinFileWorkCut::fillFileWithRandom(int count) {
 
     string number;
     for (int i = 0; i < count; i++) {
-        number = PhoneOwnerCut::getRandomPhoneNumber(i);
+        number = PhoneOwnerCut::getRandomPhoneNumber();
 
         while (binary_search(numbers.begin(), numbers.end(), number))
-            number = PhoneOwnerCut::getRandomPhoneNumber(i);
+            number = PhoneOwnerCut::getRandomPhoneNumber();
 
         numbers.push_back(number);
     }
@@ -29,9 +29,9 @@ void BinFileWorkCut::fillFileWithRandom(int count) {
     file.open("enter.txt", ios::out | ios::trunc);
     if (file.is_open()) {
         if (!numbers.empty()) {
-            file << numbers[0] << "\n" << PhoneOwnerCut::getRandomAddress(0);
+            file << numbers[0] << "\n" << PhoneOwnerCut::getRandomAddress();
             for (int i = 1; i < count; i++) {
-                file << "\n" << numbers[i] << "\n" << PhoneOwnerCut::getRandomAddress(i);
+                file << "\n" << numbers[i] << "\n" << PhoneOwnerCut::getRandomAddress();
             }
         }
     } else {

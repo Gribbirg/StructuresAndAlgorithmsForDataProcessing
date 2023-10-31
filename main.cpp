@@ -11,6 +11,8 @@ int main() {
     cout << "Structures and algorithms for data processing variant 3" << endl;
     cout << endl;
 
+    srand((unsigned) (time(nullptr)));
+
 //    Pr1::start();
 //    Practice2::start();
 //    Practice3::start();

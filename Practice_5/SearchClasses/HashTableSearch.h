@@ -9,11 +9,11 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "ISearchClass.h"
+#include "../FileWork/BinFileSearch.h"
 
 using namespace std;
 
-class HashTableSearch : public ISearchClass {
+class HashTableSearch : public BinFileSearch::ISearchClass {
 private:
     struct HashTableSearchRow {
         string phone;

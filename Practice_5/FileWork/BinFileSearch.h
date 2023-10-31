@@ -6,7 +6,6 @@
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_BINFILESEARCH_H
 
 #include "BinFileWorkCut.h"
-#include "../SearchClasses/ISearchClass.h"
 #include "../PhoneOwnerCut.h"
 #include <string>
 
@@ -14,6 +13,16 @@ using namespace std;
 
 
 class BinFileSearch : public BinFileWorkCut {
+public:
+    class ISearchClass {
+    public:
+        virtual bool insert(const string &phone, int position) = 0;
+        virtual int deleteElement(const string &phone) = 0;
+        virtual int find(const string &phone) = 0;
+        virtual void print() = 0;
+        virtual ~ISearchClass() = default;
+    };
+
 private:
     ISearchClass *searchObject;
 

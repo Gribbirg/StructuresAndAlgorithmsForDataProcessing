@@ -6,10 +6,10 @@
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_SPLAYTREE_H
 
 #include "BinaryTree.h"
-#include "../SearchClasses/ISearchClass.h"
+#include "../FileWork/BinFileSearch.h"
 #include "../PhoneOwnerCut.h"
 
-class SplayTree : public BinaryTree, public ISearchClass {
+class SplayTree : public BinaryTree, public BinFileSearch::ISearchClass {
 private:
     static NodeTree *leftRotation(NodeTree *node);
 

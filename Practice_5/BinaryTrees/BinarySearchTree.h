@@ -6,9 +6,9 @@
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_BINARYSEARCHTREE_H
 
 #include "BinaryTree.h"
-#include "../SearchClasses/ISearchClass.h"
+#include "../FileWork/BinFileSearch.h"
 
-class BinarySearchTree : public BinaryTree, public ISearchClass {
+class BinarySearchTree : public BinaryTree, public BinFileSearch::ISearchClass {
 private:
 
     bool insert(NodeTree *node, const string& phone, int position);

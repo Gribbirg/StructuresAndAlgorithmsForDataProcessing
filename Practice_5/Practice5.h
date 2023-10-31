@@ -5,7 +5,6 @@
 #ifndef STRUCTURESANDALGORITHMSFORDATAPROCESSING_PRACTICE5_H
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_PRACTICE5_H
 
-#include "SearchClasses/ISearchClass.h"
 #include "FileWork/BinFileSearch.h"
 
 class Practice5 {

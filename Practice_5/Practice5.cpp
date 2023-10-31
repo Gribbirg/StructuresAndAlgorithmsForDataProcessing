@@ -91,7 +91,7 @@ void Practice5::withoutFile() {
     cout << endl;
     int enter, i = 0;
     string phone;
-    ISearchClass *searchObject = new T();
+    BinFileSearch::ISearchClass *searchObject = new T();
 
     cout << "Information about operations numbers:" << endl
          << "0 - exit from without file mode;" << endl

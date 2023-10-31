@@ -78,46 +78,46 @@ BinaryTree::NodeTree *SplayTree::rightRotation(BinaryTree::NodeTree *node) {
     return child;
 }
 
-BinaryTree::NodeTree *SplayTree::splay(NodeTree *father, unsigned long long int phone) {
-    if (father == nullptr || phone == PhoneOwnerCut::phoneToLong(father->value)) return father;
+BinaryTree::NodeTree *SplayTree::splay(NodeTree *node, unsigned long long int phone) {
+    if (node == nullptr || phone == PhoneOwnerCut::phoneToLong(node->value)) return node;
 
-    if (phone < PhoneOwnerCut::phoneToLong(father->value)) {
+    if (phone < PhoneOwnerCut::phoneToLong(node->value)) {
 
-        if (father->leftNode == nullptr) return father;
+        if (node->leftNode == nullptr) return node;
 
-        if (phone < PhoneOwnerCut::phoneToLong(father->leftNode->value)) {
+        if (phone < PhoneOwnerCut::phoneToLong(node->leftNode->value)) {
 
-            father->leftNode->leftNode = splay(father->leftNode->leftNode, phone);
-            father = rightRotation(father);
+            node->leftNode->leftNode = splay(node->leftNode->leftNode, phone);
+            node = rightRotation(node);
 
-        } else if (phone > PhoneOwnerCut::phoneToLong(father->leftNode->value)) {
+        } else if (phone > PhoneOwnerCut::phoneToLong(node->leftNode->value)) {
 
-            father->leftNode->rightNode = splay(father->leftNode->rightNode, phone);
-            if (father->leftNode->rightNode != nullptr)
-                father->leftNode = leftRotation(father->leftNode);
+            node->leftNode->rightNode = splay(node->leftNode->rightNode, phone);
+            if (node->leftNode->rightNode != nullptr)
+                node->leftNode = leftRotation(node->leftNode);
 
         }
 
-        return (father->leftNode == nullptr) ? father : rightRotation(father);
+        return (node->leftNode == nullptr) ? node : rightRotation(node);
 
     } else {
 
-        if (father->rightNode == nullptr) return father;
+        if (node->rightNode == nullptr) return node;
 
-        if (phone < PhoneOwnerCut::phoneToLong(father->rightNode->value)) {
+        if (phone < PhoneOwnerCut::phoneToLong(node->rightNode->value)) {
 
-            father->rightNode->leftNode = splay(father->rightNode->leftNode, phone);
-            if (father->rightNode->leftNode != nullptr)
-                father->rightNode = rightRotation(father->rightNode);
+            node->rightNode->leftNode = splay(node->rightNode->leftNode, phone);
+            if (node->rightNode->leftNode != nullptr)
+                node->rightNode = rightRotation(node->rightNode);
 
-        } else if (phone > PhoneOwnerCut::phoneToLong(father->rightNode->value)) {
+        } else if (phone > PhoneOwnerCut::phoneToLong(node->rightNode->value)) {
 
-            father->rightNode->rightNode = splay(father->rightNode->rightNode, phone);
-            father = leftRotation(father);
+            node->rightNode->rightNode = splay(node->rightNode->rightNode, phone);
+            node = leftRotation(node);
 
         }
 
-        return (father->rightNode == nullptr) ? father : leftRotation(father);
+        return (node->rightNode == nullptr) ? node : leftRotation(node);
 
     }
 }

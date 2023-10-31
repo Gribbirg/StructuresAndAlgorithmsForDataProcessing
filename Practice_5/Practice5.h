@@ -6,7 +6,7 @@
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_PRACTICE5_H
 
 #include "SearchClasses/ISearchClass.h"
-#include "SearchClasses/BinFileSearch.h"
+#include "FileWork/BinFileSearch.h"
 
 class Practice5 {
 private:

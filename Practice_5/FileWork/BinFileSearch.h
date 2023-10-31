@@ -5,8 +5,8 @@
 #ifndef STRUCTURESANDALGORITHMSFORDATAPROCESSING_BINFILESEARCH_H
 #define STRUCTURESANDALGORITHMSFORDATAPROCESSING_BINFILESEARCH_H
 
-#include "../BinFileWorkCut.h"
-#include "ISearchClass.h"
+#include "BinFileWorkCut.h"
+#include "../SearchClasses/ISearchClass.h"
 #include "../PhoneOwnerCut.h"
 #include <string>
 

@@ -15,7 +15,7 @@ private:
 
     static NodeTree *rightRotation(NodeTree *node);
 
-    static NodeTree *splay(NodeTree *father, unsigned long long int phone);
+    static NodeTree *splay(NodeTree *node, unsigned long long int phone);
 
 //     unsigned int rotationCount = 0;
 public:

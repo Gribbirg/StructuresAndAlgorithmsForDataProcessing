@@ -7,7 +7,7 @@
 #include "BinaryTrees/BinarySearchTree.h"
 #include "BinaryTrees/SplayTree.h"
 #include "SearchClasses/HashTableSearch.h"
-#include "SearchClasses/BinFileSearch.h"
+#include "FileWork/BinFileSearch.h"
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -210,7 +210,7 @@ void Practice5::withFile() {
     PhoneOwnerCut phoneOwner;
 
     cout << "Information about operations numbers:" << endl
-         << "0 - exit from practice 5;" << endl
+         << "0 - exit from with file mode;" << endl
          << "1 - print operations info;" << endl
          << "2 - print struct;" << endl
          << "3 - print data from bin file;" << endl
@@ -233,7 +233,7 @@ void Practice5::withFile() {
 
             case 1:
                 cout << "Information about operations numbers:" << endl
-                     << "0 - exit from practice 5;" << endl
+                     << "0 - exit from with file mode;" << endl
                      << "1 - print operations info;" << endl
                      << "2 - print struct;" << endl
                      << "3 - print data from bin file;" << endl

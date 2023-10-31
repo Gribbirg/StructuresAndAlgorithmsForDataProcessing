@@ -73,9 +73,13 @@ const string streets[] = {
         "Ilya Avenue",
         "Tankovodsky Avenue",
         "Mushroom street",
-        "Elevatorskaya street"
+        "Elevatorskaya street",
+        "Shkebedi street",
+        "The street after SiAOD",
+        "Petyxovskay street",
+        "Han street"
 };
-const unsigned int streetsSize = 12;
+const unsigned int streetsSize = 16;
 
 string PhoneOwnerCut::getRandomAddress(int i) {
     return streets[getRandom(i * 8) % streetsSize] + " h. " + std::to_string(getRandom(i * 88) % 99 + 1) + " a. " +

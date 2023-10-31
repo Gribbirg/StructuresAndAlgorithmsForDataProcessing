@@ -51,10 +51,10 @@ add_executable(StructuresAndAlgorithmsForDataProcessing main.cpp
         Practice_5/SearchClasses/ISearchClass.cpp
         Practice_5/SearchClasses/ISearchClass.h
         Practice_5/SearchClasses/HashTableSearch.cpp
-        Practice_5/SearchClasses/BinFileSearch.cpp
-        Practice_5/SearchClasses/BinFileSearch.h
-        Practice_5/BinFileWorkCut.h
-        Practice_5/BinFileWorkCut.cpp
+        Practice_5/FileWork/BinFileSearch.cpp
+        Practice_5/FileWork/BinFileSearch.h
+        Practice_5/FileWork/BinFileWorkCut.h
+        Practice_5/FileWork/BinFileWorkCut.cpp
         Practice_5/BinaryTrees/SplayTree.cpp
         Practice_5/BinaryTrees/SplayTree.h
 )

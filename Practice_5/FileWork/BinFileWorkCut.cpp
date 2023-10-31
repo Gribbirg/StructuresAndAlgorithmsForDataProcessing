@@ -42,6 +42,7 @@ void BinFileWorkCut::fillFileWithRandom(int count) {
 }
 
 void BinFileWorkCut::readAll() {
+    cout << "Bin file:" << endl;
     file.open(fileName, ios::in | ios::binary);
 
     if (!file.is_open()) {

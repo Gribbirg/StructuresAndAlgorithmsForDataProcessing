@@ -9,8 +9,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "HashTable.h"
-#include "PhoneOwnerCut.h"
+#include "hashtable.h"
+#include "../PhoneOwnerCut.h"
 
 using namespace std;
 

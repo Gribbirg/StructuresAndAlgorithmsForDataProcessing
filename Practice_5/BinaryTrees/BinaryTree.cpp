@@ -14,7 +14,13 @@ BinaryTree::NodeTree::~NodeTree() {
 
 void BinaryTree::NodeTree::print(int level) {
     if (rightNode != nullptr) rightNode->print(level + 1);
-    cout << string(level * 25, ' ') << value << " in " << position << endl;
+
+    cout << string(level * 20, ' ') << value << " in " << position;
+    if (leftNode != nullptr && rightNode != nullptr) cout << " X" << endl;
+    else if (leftNode != nullptr) cout << R"( \)" << endl;
+    else if (rightNode != nullptr) cout << " /" << endl;
+    else cout << endl;
+
     if (leftNode != nullptr) leftNode->print(level + 1);
 }
 

@@ -16,7 +16,7 @@ bool BinarySearchTree::insert(const string &phone, int position) {
 int BinarySearchTree::deleteElement(const string &phone) {
     if (root != nullptr) {
         if (root->value == phone) {
-            NodeTree* nodeForDel = root;
+            NodeTree *nodeForDel = root;
             root = findNewElement(nodeForDel);
             if (root != nullptr)
                 root->reducePositions(nodeForDel->position);
@@ -47,7 +47,7 @@ int BinarySearchTree::deleteElement(BinaryTree::NodeTree *node, const string &ph
     if (nodeForDel->value == phone) {
         NodeTree *newChild = findNewElement(nodeForDel);
         nodeForDel->del();
-        (isLeft)? node->leftNode = newChild : node->rightNode = newChild;
+        (isLeft) ? node->leftNode = newChild : node->rightNode = newChild;
         root->reducePositions(nodeForDel->position);
         return nodeForDel->position;
     } else {

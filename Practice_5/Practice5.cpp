@@ -337,12 +337,11 @@ void Practice5::comparison() {
     binFileWorkCut->fillBinFile(enter);
 
     if (count < 30)
-        cout << "Phones for search:";
+        cout << "Phones for search:" << endl;
     for (int i = 0; i < count; i++) {
-        srand((unsigned) time(nullptr) + i * rand());
         phoneToSearch.push_back(binFileWorkCut->getElement((rand() * rand()) % enter).phone);
         if (count < 30)
-            cout << " " << phoneToSearch[i];
+            cout << phoneToSearch[i] << endl;
     }
     if (count < 30)
         cout << endl;
@@ -364,11 +363,13 @@ void Practice5::comparison() {
 
 template<class T>
 void Practice5::test(const vector<string> &phones) {
+
     auto startTime = chrono::steady_clock::now();
     auto binFile = new BinFileSearch(new T(), "bin.dat");
     auto endTime = chrono::steady_clock::now();
     cout << "Init time: " << chrono::duration<double, std::chrono::seconds::period>(endTime - startTime).count()
          << " seconds" << endl;
+
     double sum = 0.0;
     PhoneOwnerCut phoneOwner;
     for (const string &phone: phones) {
@@ -381,6 +382,8 @@ void Practice5::test(const vector<string> &phones) {
                  << " milliseconds" << endl;
         sum += chrono::duration<double, milli>(endTime - startTime).count();
     }
+
     cout << "Average time: " << sum / (double) phones.size() << " milliseconds" << endl;
+
     delete binFile;
 }

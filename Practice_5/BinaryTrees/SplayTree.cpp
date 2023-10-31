@@ -30,6 +30,7 @@ bool SplayTree::insert(const string &phone, int position) {
         root->rightNode = nullptr;
     }
     root = node;
+//    cout << rotationCount << endl;
     return true;
 }
 
@@ -62,6 +63,7 @@ void SplayTree::print() {
 }
 
 BinaryTree::NodeTree *SplayTree::leftRotation(BinaryTree::NodeTree *node) {
+//    rotationCount++;
     NodeTree *child = node->rightNode;
     node->rightNode = child->leftNode;
     child->leftNode = node;
@@ -69,6 +71,7 @@ BinaryTree::NodeTree *SplayTree::leftRotation(BinaryTree::NodeTree *node) {
 }
 
 BinaryTree::NodeTree *SplayTree::rightRotation(BinaryTree::NodeTree *node) {
+//    rotationCount++;
     NodeTree *child = node->leftNode;
     node->leftNode = child->rightNode;
     child->rightNode = node;

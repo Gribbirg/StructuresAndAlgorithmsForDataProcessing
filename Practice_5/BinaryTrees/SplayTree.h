@@ -16,6 +16,8 @@ private:
     static NodeTree *rightRotation(NodeTree *node);
 
     static NodeTree *splay(NodeTree *father, unsigned long long int phone);
+
+//     unsigned int rotationCount = 0;
 public:
     bool insert(const string &phone, int position) override;
 

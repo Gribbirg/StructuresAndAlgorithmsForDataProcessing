@@ -339,8 +339,8 @@ void Practice5::comparison() {
     if (count < 30)
         cout << "Phones for search:";
     for (int i = 0; i < count; i++) {
-//        srand((unsigned) time(nullptr) + i * rand());
-        phoneToSearch.push_back(binFileWorkCut->getElement(rand() % enter).phone);
+        srand((unsigned) time(nullptr) + i * rand());
+        phoneToSearch.push_back(binFileWorkCut->getElement((rand() * rand()) % enter).phone);
         if (count < 30)
             cout << " " << phoneToSearch[i];
     }

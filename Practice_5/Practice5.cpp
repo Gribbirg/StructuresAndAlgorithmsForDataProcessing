@@ -378,7 +378,8 @@ void Practice5::test(const vector<string> &phones) {
         endTime = chrono::steady_clock::now();
         if (phones.size() < 30)
             cout << left << setw(125) << phoneOwner.to_string()
-                 << " Search time: " << chrono::duration<double, milli>(endTime - startTime).count()
+                 << " Search time: " << right << setw(8)
+                 << chrono::duration<double, milli>(endTime - startTime).count()
                  << " milliseconds" << endl;
         sum += chrono::duration<double, milli>(endTime - startTime).count();
     }

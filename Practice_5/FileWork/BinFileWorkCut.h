@@ -37,6 +37,8 @@ public:
     void fillBinFromEnter();
 
     void insert(PhoneOwnerCut phoneOwner, unsigned int position);
+
+    void deleteElement(unsigned int position);
 };
 
 

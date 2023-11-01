@@ -55,38 +55,13 @@ bool BinFileSearch::insert(PhoneOwnerCut phoneOwner) {
 }
 
 bool BinFileSearch::deleteElement(const string &phoneNumber) {
-
     int position = searchObject->deleteElement(phoneNumber);
 
     if (position == -1)
         return false;
 
-    file.open(fileName, ios::in | ios::binary);
-    file1.open("copy_" + fileName, ios::out | ios::binary);
-
-    if (!(file.is_open() && file1.is_open())) {
-        cout << "Error while opening file!" << endl;
-        exit(0);
-    }
-
-    PhoneOwnerCut phoneOwner;
-
-    for (int i = 0; i < position; i++) {
-        file.read((char *) &phoneOwner, sizeof(PhoneOwnerCut));
-        file1.write((char *) &phoneOwner, sizeof(PhoneOwnerCut));
-    }
-    file.seekg((position + 1) * sizeof(PhoneOwnerCut), ios::beg);
-    for (int i = position + 1; i < size; i++) {
-        file.read((char *) &phoneOwner, sizeof(PhoneOwnerCut));
-        file1.write((char *) &phoneOwner, sizeof(PhoneOwnerCut));
-    }
-    file.close();
-    file1.close();
-
-    remove(fileName.c_str());
-    rename(("copy_" + fileName).c_str(), fileName.c_str());
+    BinFileWorkCut::deleteElement(position);
     size--;
-
     return true;
 }
 

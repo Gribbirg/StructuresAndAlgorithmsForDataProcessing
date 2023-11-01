@@ -96,7 +96,7 @@ void Practice5::withoutFile() {
     cout << "Information about operations numbers:" << endl
          << "0 - exit from without file mode;" << endl
          << "1 - print operations info;" << endl
-         << "2 - print table;" << endl
+         << "2 - print struct;" << endl
          << "3 - find element;" << endl
          << "4 - insert element;" << endl
          << "5 - insert many random elements;" << endl
@@ -135,7 +135,7 @@ void Practice5::withoutFile() {
 
                 enter = searchObject->find(phone);
                 if (enter == -1)
-                    cout << "The phone " << phone << " isn't in the table!" << endl;
+                    cout << "The phone " << phone << " isn't in the struct!" << endl;
                 else
                     cout << "The position of phone " << phone << " is " << enter << endl;
 
@@ -150,10 +150,10 @@ void Practice5::withoutFile() {
                 if (phone == "0") phone = PhoneOwnerCut::getRandomPhoneNumber();
 
                 if (searchObject->insert(phone, i)) {
-                    cout << "Phone " << phone << " is now in the table!" << endl;
+                    cout << "Phone " << phone << " is now in the file!" << endl;
                     i++;
                 } else
-                    cout << "Phone " << phone << " is already in the table!" << endl;
+                    cout << "Phone " << phone << " is already in the struct!" << endl;
 
                 break;
 
@@ -179,7 +179,7 @@ void Practice5::withoutFile() {
                 if (searchObject->deleteElement(phone) != -1)
                     cout << "Phone " << phone << " was deleted!" << endl;
                 else
-                    cout << "Phone " << phone << " isn't in the table!" << endl;
+                    cout << "Phone " << phone << " isn't in the struct!" << endl;
 
                 break;
 
@@ -313,7 +313,7 @@ void Practice5::withFile() {
                 if (binFile->deleteElement(phone))
                     cout << "Phone " << phone << " was deleted!" << endl;
                 else
-                    cout << "Phone " << phone << " isn't in the table!" << endl;
+                    cout << "Phone " << phone << " isn't in the file!" << endl;
 
                 break;
 

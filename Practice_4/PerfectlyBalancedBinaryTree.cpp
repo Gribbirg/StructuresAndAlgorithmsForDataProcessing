@@ -58,10 +58,13 @@ char PerfectlyBalancedBinaryTree::Node::getMostLeftNode() {
 }
 
 char PerfectlyBalancedBinaryTree::getMostLeftNode() {
-    return root->getMostLeftNode();
+    return (root == nullptr)? ' ' : root->getMostLeftNode();
 }
 
 int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
+
+    if (root == nullptr) return -1;
+
     queue<Node *> order;
     Node *node;
     order.push(root);
@@ -82,7 +85,7 @@ int PerfectlyBalancedBinaryTree::getPathLengthToNode(char value) {
 }
 
 char PerfectlyBalancedBinaryTree::getBiggestLeaf() {
-    return root->getBiggestLeaf();
+    return (root == nullptr)? ' ' : root->getBiggestLeaf();
 }
 
 int PerfectlyBalancedBinaryTree::getHeight() {

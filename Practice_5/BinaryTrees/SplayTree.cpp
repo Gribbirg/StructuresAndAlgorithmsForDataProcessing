@@ -40,14 +40,11 @@ int SplayTree::deleteElement(const string &phone) {
         NodeTree *nodeDel = root;
         if (root->leftNode == nullptr && root->rightNode == nullptr) {
             root = nullptr;
-        }
-        else if (root->leftNode == nullptr) {
+        } else if (root->leftNode == nullptr) {
             root = root->rightNode;
-        } else if (root->rightNode == nullptr){
+        } else if (root->rightNode == nullptr) {
             root = root->leftNode;
-        }
-
-        else {
+        } else {
             NodeTree *node = root->rightNode;
             root = root->leftNode;
             root = splay(root, PhoneOwnerCut::phoneToLong(phone));

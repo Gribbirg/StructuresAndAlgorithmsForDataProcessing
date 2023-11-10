@@ -55,4 +55,8 @@ add_executable(StructuresAndAlgorithmsForDataProcessing main.cpp
         Practice_5/FileWork/BinFileWorkCut.cpp
         Practice_5/BinaryTrees/SplayTree.cpp
         Practice_5/BinaryTrees/SplayTree.h
+        Practice_6/Practice6.cpp
+        Practice_6/Practice6.h
+        Practice_6/MatrixGraph.cpp
+        Practice_6/MatrixGraph.h
 )

@@ -119,3 +119,9 @@ void MatrixGraph::printMatrix() {
         cout << endl;
     }
 }
+
+MatrixGraph::~MatrixGraph() {
+    for (int i = 0; i < vertexCount; i++)
+        delete[] matrix[i];
+    delete[] matrix;
+}

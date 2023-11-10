@@ -30,7 +30,8 @@ void Practice6::start() {
         switch (enter) {
 
             case 0:
-                cout << "Exit from practice 4" << endl;
+                cout << "Exit from practice 6" << endl;
+                delete graph;
                 return;
 
             case 1:

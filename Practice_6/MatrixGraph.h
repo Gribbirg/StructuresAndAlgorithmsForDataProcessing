@@ -30,6 +30,8 @@ public:
 
     explicit MatrixGraph(int vertexCount);
 
+    virtual ~MatrixGraph();
+
     void insertEdge(int from, int to, int weight);
 
     void print();

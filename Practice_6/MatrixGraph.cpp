@@ -101,3 +101,21 @@ string MatrixGraph::insertNumToCenter(string line, int num, int start, int end) 
 int MatrixGraph::getVertexCount() const {
     return vertexCount;
 }
+
+void MatrixGraph::printMatrix() {
+    int numLen = max(getLenOfNumber(getMaxWeight()), getLenOfNumber(vertexCount - 1));
+
+    cout << left << setw(numLen) << ' ';
+    for (int i = 0; i < vertexCount; i++) {
+        cout << ' ' << left << setw(numLen) << i;
+    }
+    cout << endl;
+
+    for (int i = 0; i < vertexCount; i++) {
+        cout << left << setw(numLen) << i;
+        for (int j = 0; j < vertexCount; j++) {
+            cout << ' ' << left << setw(numLen) << matrix[i][j];
+        }
+        cout << endl;
+    }
+}

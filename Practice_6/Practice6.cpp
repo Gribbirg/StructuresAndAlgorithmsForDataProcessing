@@ -11,78 +11,88 @@ void Practice6::start() {
     unsigned int enter;
 
     auto graph = createGraph();
-    graph->print();
+    cout << endl;
 
-//    while (true) {
-//        cout << "Search structures:" << endl
-//             << "0 - exit;" << endl
-//             << "1 - binary search tree;" << endl
-//             << "2 - splay binary search tree;" << endl
-//             << "3 - hash table;" << endl
-//             << "9 - comparison." << endl;
-//        cout << "What to use?: ";
-//        cin >> enter;
-//        cout << endl;
-//        switch (enter) {
-//            case 0:
-//                cout << "Exit from practice 5." << endl;
-//                return;
+    cout << "Information about operations numbers:" << endl
+         << "0 - exit;" << endl
+         << "1 - print information;" << endl
+         << "2 - create new graph;" << endl
+         << "3 - print graph;" << endl
+         << "4 - print matrix of graph;" << endl
+         << "5 - insert edges;" << endl
+         << "6 - get biggest value of leaf." << endl
+         << endl;
+
+    while (true) {
+        cout << "Enter operation number or 0 for exit: ";
+        cin >> enter;
+
+        switch (enter) {
+
+            case 0:
+                cout << "Exit from practice 4" << endl;
+                return;
+
+            case 1:
+                cout << "Information about operations numbers:" << endl
+                     << "0 - exit;" << endl
+                     << "1 - print information;" << endl
+                     << "2 - create new tree;" << endl
+                     << "3 - print tree;" << endl
+                     << "4 - get value of most left node;" << endl
+                     << "5 - get path length to node with searched value;" << endl
+                     << "6 - get biggest value of leaf." << endl;
+                break;
+
+            case 2:
+                delete graph;
+                graph = createGraph();
+                break;
+
+            case 3:
+                cout << "Graph:" << endl;
+                graph->print();
+                break;
+
+            case 4:
+                cout << "Matrix of graph:" << endl;
+                graph->printMatrix();
+                break;
+
+            case 5:
+                insertEdges(graph);
+                break;
 //
-//            case 1:
-//                cout << "Work with binary search tree." << endl;
-//                cout << "Use bin file? (1 - yes, 0 - no): ";
-//                cin >> enter;
-//
-//                if (enter == 1) {
-//                    withFile<BinarySearchTree>();
-//                } else {
-//                    withoutFile<BinarySearchTree>();
-//                }
-//
+//            case 6:
+//                cout << "Biggest value of leaf: " << tree->getBiggestLeaf() << endl;
 //                break;
-//
-//            case 2:
-//                cout << "Work with splay binary tree." << endl;
-//                cout << "Use bin file? (1 - yes, 0 - no): ";
-//                cin >> enter;
-//
-//                if (enter == 1) {
-//                    withFile<SplayTree>();
-//                } else {
-//                    withoutFile<SplayTree>();
-//                }
-//                break;
-//
-//            case 3:
-//                cout << "Work with hash table." << endl;
-//                cout << "Use bin file? (1 - yes, 0 - no): ";
-//                cin >> enter;
-//
-//                if (enter == 1) {
-//                    withFile<HashTableSearch>();
-//                } else {
-//                    withoutFile<HashTableSearch>();
-//                }
-//                break;
-//
-//            case 9:
-//                comparison();
-//                break;
-//
-//            default:
-//                cout << "Error. Try again!" << endl;
-//        }
-//        cout << endl;
-//    }
+
+            default:
+                cout << "Error. Try again!" << endl;
+        }
+        cout << endl;
+    }
 }
 
 MatrixGraph *Practice6::createGraph() {
 
-    int enter, enter2;
+    int enter;
     cout << "How many vortexes?: ";
     cin >> enter;
     auto graph = new MatrixGraph(enter);
 
+    insertEdges(graph);
+
+    cout << endl;
+    cout << "Graph:" << endl;
+    graph->print();
+
+    return graph;
+}
+
+void Practice6::insertEdges(MatrixGraph *graph) {
+
+    int enter, enter2;
     cout << "How many edges?: ";
     cin >> enter;
     cout << "Random? (1 - yes, 0 - no): ";
@@ -110,6 +120,4 @@ MatrixGraph *Practice6::createGraph() {
             graph->insertEdge(start, end, weight);
         }
     }
-
-    return graph;
 }

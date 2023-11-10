@@ -34,6 +34,8 @@ public:
 
     void print();
 
+    void printMatrix();
+
     int getVertexCount() const;
 };
 

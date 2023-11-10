@@ -13,6 +13,7 @@ using namespace std;
 class Practice6 {
 private:
     static MatrixGraph *createGraph();
+    static void insertEdges(MatrixGraph *graph);
 public:
     static void start();
 };

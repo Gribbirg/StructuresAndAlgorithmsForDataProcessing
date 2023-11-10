@@ -11,6 +11,8 @@
 using namespace std;
 
 class Practice6 {
+private:
+    static MatrixGraph *createGraph();
 public:
     static void start();
 };

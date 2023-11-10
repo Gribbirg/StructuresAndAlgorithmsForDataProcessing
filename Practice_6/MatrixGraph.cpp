@@ -48,9 +48,9 @@ void MatrixGraph::print() {
                 out[0][end] = '|';
                 lineNum = 1;
                 while (!checkForEmpty(out[lineNum], start, end)) {
-                    if (out[lineNum][start] == '0') out[lineNum][start] = '|';
+                    if (out[lineNum][start] == ' ') out[lineNum][start] = '|';
                     if (out[lineNum][start] == '-') out[lineNum][start] = '+';
-                    if (out[lineNum][end] == '0') out[lineNum][end] = '|';
+                    if (out[lineNum][end] == ' ') out[lineNum][end] = '|';
                     if (out[lineNum][end] == '-') out[lineNum][end] = '+';
                     lineNum++;
                     if (lineNum + 1 > out.size())
@@ -96,4 +96,8 @@ string MatrixGraph::insertNumToCenter(string line, int num, int start, int end) 
         line[i + startPrint] = to_string(num)[i];
     }
     return line;
+}
+
+int MatrixGraph::getVertexCount() const {
+    return vertexCount;
 }

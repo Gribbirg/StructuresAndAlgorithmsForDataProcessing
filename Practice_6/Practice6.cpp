@@ -10,12 +10,7 @@ void Practice6::start() {
 
     unsigned int enter;
 
-    MatrixGraph *graph = new MatrixGraph(11);
-    graph->insertEdge(0, 8, 5);
-    graph->insertEdge(2, 10, 5);
-    graph->insertEdge(5, 8, 5);
-    graph->insertEdge(1, 3, 1);
-    graph->insertEdge(1, 0, 1);
+    auto graph = createGraph();
     graph->print();
 
 //    while (true) {
@@ -79,4 +74,38 @@ void Practice6::start() {
 //        }
 //        cout << endl;
 //    }
+}
+
+MatrixGraph *Practice6::createGraph() {
+
+    int enter;
+    cout << "How many vortexes? (0 - random from 1 to 100): ";
+    cin >> enter;
+    auto graph = new MatrixGraph((enter == 0) ? rand() % 99 + 1 : enter);
+
+    cout << "How many edges? (0 - random edges): ";
+    cin >> enter;
+
+    if (enter == 0) {
+        for (int i = 0; i < graph->getVertexCount(); i++) {
+            for (int j = i + 1; j < graph->getVertexCount(); j++) {
+                if (rand() % 100 < 2)
+                    graph->insertEdge(i, j, rand() % 100);
+            }
+        }
+    } else {
+        int start, end, weight;
+        for (int i = 0; i < enter; i++) {
+            cout << i << ":" << endl;
+            cout << "From vertex with num: ";
+            cin >> start;
+            cout << "To vertex with num: ";
+            cin >> end;
+            cout << "Weight: ";
+            cin >> weight;
+            graph->insertEdge(start, end, weight);
+        }
+    }
+
+    return graph;
 }

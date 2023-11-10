@@ -33,6 +33,8 @@ public:
     void insertEdge(int from, int to, int weight);
 
     void print();
+
+    int getVertexCount() const;
 };
 
 

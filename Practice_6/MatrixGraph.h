@@ -22,6 +22,10 @@ private:
 
     static int getLenOfNumber(int num);
 
+    static bool checkForEmpty(string line, int start, int end);
+
+    static string insertNumToCenter(string line, int num, int start, int end);
+
 public:
 
     explicit MatrixGraph(int vertexCount);

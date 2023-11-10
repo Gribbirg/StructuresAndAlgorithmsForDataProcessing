@@ -10,8 +10,12 @@ void Practice6::start() {
 
     unsigned int enter;
 
-    MatrixGraph *graph = new MatrixGraph(50);
-    graph->insertEdge(0, 8, 50);
+    MatrixGraph *graph = new MatrixGraph(11);
+    graph->insertEdge(0, 8, 5);
+    graph->insertEdge(2, 10, 5);
+    graph->insertEdge(5, 8, 5);
+    graph->insertEdge(1, 3, 1);
+    graph->insertEdge(1, 0, 1);
     graph->print();
 
 //    while (true) {

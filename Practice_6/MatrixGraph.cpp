@@ -7,7 +7,7 @@
 
 MatrixGraph::MatrixGraph(int vertexCount) : vertexCount(vertexCount) {
     edgeCount = 0;
-    matrix = new int*[vertexCount];
+    matrix = new int *[vertexCount];
     for (int i = 0; i < vertexCount; i++) {
         matrix[i] = new int[vertexCount];
         for (int j = 0; j < vertexCount; j++)
@@ -36,22 +36,36 @@ void MatrixGraph::print() {
     cout << endl;
 
     vector<string> out;
-    out.push_back(string(numLen * vertexCount + vertexCount - 1, ' '));
-    out.push_back(string(numLen * vertexCount + vertexCount - 1, ' '));
+    out.emplace_back(numLen * vertexCount + vertexCount * spaceCount - spaceCount, ' ');
+    out.emplace_back(numLen * vertexCount + vertexCount * spaceCount - spaceCount, ' ');
+    int lineNum, start, end;
     for (int i = 0; i < vertexCount; i++) {
         for (int j = i; j < vertexCount; j++) {
             if (matrix[i][j] != 0) {
-                out[0][i * (numLen + spaceCount)] = '|';
-                out[0][j * (numLen + spaceCount)] = '|';
-                out[1][i * (numLen + spaceCount)] = (char) 92;
-                out[1][j * (numLen + spaceCount)] = '/';
-                for (int k = i * (numLen + spaceCount) + 1; k < j * (numLen + spaceCount); k++)
-                    out[1][k] = '_';
+                start = i * (numLen + spaceCount);
+                end = j * (numLen + spaceCount);
+                out[0][start] = '|';
+                out[0][end] = '|';
+                lineNum = 1;
+                while (!checkForEmpty(out[lineNum], start, end)) {
+                    if (out[lineNum][start] == '0') out[lineNum][start] = '|';
+                    if (out[lineNum][start] == '-') out[lineNum][start] = '+';
+                    if (out[lineNum][end] == '0') out[lineNum][end] = '|';
+                    if (out[lineNum][end] == '-') out[lineNum][end] = '+';
+                    lineNum++;
+                    if (lineNum + 1 > out.size())
+                        out.emplace_back(numLen * vertexCount + vertexCount * spaceCount - spaceCount, ' ');
+                }
+                out[lineNum][start] = (char) 92;
+                out[lineNum][end] = '/';
+                for (int k = start + 1; k < end; k++)
+                    out[lineNum][k] = '-';
+                out[lineNum] = insertNumToCenter(out[lineNum], matrix[i][j], start, end);
             }
         }
     }
 
-    for (const string& line : out)
+    for (const string &line: out)
         cout << line << endl;
 }
 
@@ -66,4 +80,20 @@ int MatrixGraph::getMaxWeight() {
 
 int MatrixGraph::getLenOfNumber(int num) {
     return (int) to_string(num).length();
+}
+
+bool MatrixGraph::checkForEmpty(string line, int start, int end) {
+    for (int i = start; i < end + 1; i++) {
+        if (line[i] != ' ') return false;
+    }
+    return true;
+}
+
+string MatrixGraph::insertNumToCenter(string line, int num, int start, int end) {
+    int numLen = getLenOfNumber(num);
+    int startPrint = (end - start) / 2 + (end - start) % 2 - numLen / 2 + start;
+    for (int i = 0; i < numLen; i++) {
+        line[i + startPrint] = to_string(num)[i];
+    }
+    return line;
 }

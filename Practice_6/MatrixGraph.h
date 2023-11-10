@@ -26,6 +26,8 @@ private:
 
     static string insertNumToCenter(string line, int num, int start, int end);
 
+    void eulerCycle(int **matrixCopy, vector<int> &ans, int currentVertex);
+
 public:
 
     explicit MatrixGraph(int vertexCount);
@@ -39,6 +41,8 @@ public:
     void printMatrix();
 
     int getVertexCount() const;
+
+    vector<int> getEulerCycle();
 };
 
 

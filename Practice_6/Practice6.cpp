@@ -9,6 +9,7 @@ void Practice6::start() {
     cout << endl;
 
     unsigned int enter;
+    vector<int> ans;
 
     auto graph = createGraph();
     cout << endl;
@@ -20,7 +21,7 @@ void Practice6::start() {
          << "3 - print graph;" << endl
          << "4 - print matrix of graph;" << endl
          << "5 - insert edges;" << endl
-         << "6 - get biggest value of leaf." << endl
+         << "6 - get Euler cycle." << endl
          << endl;
 
     while (true) {
@@ -63,10 +64,15 @@ void Practice6::start() {
             case 5:
                 insertEdges(graph);
                 break;
-//
-//            case 6:
-//                cout << "Biggest value of leaf: " << tree->getBiggestLeaf() << endl;
-//                break;
+
+            case 6:
+                cout << "Euler cycle:" << endl;
+                ans = graph->getEulerCycle();
+                cout << ans[0] + 1;
+                for (int i = 1; i < ans.size(); i++)
+                    cout << ' ' << ans[i] + 1;
+                cout << endl;
+                break;
 
             default:
                 cout << "Error. Try again!" << endl;
@@ -111,14 +117,14 @@ void Practice6::insertEdges(MatrixGraph *graph) {
     } else {
         int weight;
         for (int i = 0; i < enter; i++) {
-            cout << i << ":" << endl;
+            cout << i + 1 << ":" << endl;
             cout << "From vertex with num: ";
             cin >> start;
             cout << "To vertex with num: ";
             cin >> end;
             cout << "Weight: ";
             cin >> weight;
-            graph->insertEdge(start, end, weight);
+            graph->insertEdge(start - 1, end - 1, weight);
         }
     }
 }

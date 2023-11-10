@@ -30,9 +30,9 @@ void MatrixGraph::print() {
         spaceCount += maxWeightLen - numLen;
     }
 
-    cout << left << setw(numLen) << 0;
+    cout << left << setw(numLen) << 1;
     for (int i = 1; i < vertexCount; i++)
-        cout << string(spaceCount, ' ') << left << setw(numLen) << to_string(i);
+        cout << string(spaceCount, ' ') << left << setw(numLen) << i + 1;
     cout << endl;
 
     vector<string> out;
@@ -107,12 +107,12 @@ void MatrixGraph::printMatrix() {
 
     cout << left << setw(numLen) << ' ';
     for (int i = 0; i < vertexCount; i++) {
-        cout << ' ' << left << setw(numLen) << i;
+        cout << ' ' << left << setw(numLen) << i + 1;
     }
     cout << endl;
 
     for (int i = 0; i < vertexCount; i++) {
-        cout << left << setw(numLen) << i;
+        cout << left << setw(numLen) << i + 1;
         for (int j = 0; j < vertexCount; j++) {
             cout << ' ' << left << setw(numLen) << matrix[i][j];
         }
@@ -124,4 +124,33 @@ MatrixGraph::~MatrixGraph() {
     for (int i = 0; i < vertexCount; i++)
         delete[] matrix[i];
     delete[] matrix;
+}
+
+vector<int> MatrixGraph::getEulerCycle() {
+
+    int **matrixCopy = new int *[vertexCount];
+    for (int i = 0; i < vertexCount; i++) {
+        matrixCopy[i] = new int[vertexCount];
+        for (int j = 0; j < vertexCount; j++)
+            matrixCopy[i][j] = matrix[i][j];
+    }
+
+    vector<int> ans;
+    eulerCycle(matrixCopy, ans, 0);
+
+    for (int i = 0; i < vertexCount; i++)
+        delete[] matrixCopy[i];
+    delete[] matrixCopy;
+
+    return ans;
+}
+
+void MatrixGraph::eulerCycle(int **matrixCopy, vector<int> &ans, int currentVertex) {
+    for (int i = 0; i < vertexCount; i++) {
+        if (matrixCopy[currentVertex][i] != 0) {
+            matrixCopy[i][currentVertex] = matrixCopy[currentVertex][i] = 0;
+            eulerCycle(matrixCopy, ans, i);
+        }
+    }
+    ans.push_back(currentVertex);
 }

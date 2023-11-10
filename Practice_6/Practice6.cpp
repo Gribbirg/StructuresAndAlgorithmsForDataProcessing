@@ -68,12 +68,15 @@ void Practice6::start() {
             case 6:
                 cout << "Euler cycle:" << endl;
                 ans = graph->getEulerCycle();
-                cout << ans[0] + 1;
-                for (int i = 1; i < ans.size(); i++)
-                    cout << ' ' << ans[i] + 1;
-                cout << endl;
+                if (ans.empty()) {
+                    cout << "No one!" << endl;
+                } else {
+                    cout << ans[0] + 1;
+                    for (int i = 1; i < ans.size(); i++)
+                        cout << ' ' << ans[i] + 1;
+                    cout << endl;
+                }
                 break;
-
             default:
                 cout << "Error. Try again!" << endl;
         }

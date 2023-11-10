@@ -3,6 +3,7 @@
 //
 
 #include <iomanip>
+#include <algorithm>
 #include "MatrixGraph.h"
 
 MatrixGraph::MatrixGraph(int vertexCount) : vertexCount(vertexCount) {
@@ -128,6 +129,9 @@ MatrixGraph::~MatrixGraph() {
 
 vector<int> MatrixGraph::getEulerCycle() {
 
+    if (!isEuler())
+        return {};
+
     int **matrixCopy = new int *[vertexCount];
     for (int i = 0; i < vertexCount; i++) {
         matrixCopy[i] = new int[vertexCount];
@@ -142,6 +146,13 @@ vector<int> MatrixGraph::getEulerCycle() {
         delete[] matrixCopy[i];
     delete[] matrixCopy;
 
+    for (int i = 0; i < vertexCount; i++) {
+        if (find(ans.begin(), ans.end(), i) == ans.end()) {
+            ans.clear();
+            break;
+        }
+    }
+
     return ans;
 }
 
@@ -153,4 +164,25 @@ void MatrixGraph::eulerCycle(int **matrixCopy, vector<int> &ans, int currentVert
         }
     }
     ans.push_back(currentVertex);
+}
+
+bool MatrixGraph::isEuler() {
+    int oddCount = 0;
+    int count;
+    for (int i = 0; i < vertexCount; i++) {
+        count = 0;
+        for (int j = 0; j < vertexCount; j++) {
+            if (matrix[i][j] != 0)
+                count++;
+        }
+        if (count % 2 != 0)
+            oddCount++;
+        else if (count == 0)
+            return false;
+    }
+    if (oddCount > 2) return false;
+
+
+
+    return true;
 }

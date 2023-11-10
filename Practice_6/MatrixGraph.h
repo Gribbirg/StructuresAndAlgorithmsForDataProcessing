@@ -28,6 +28,8 @@ private:
 
     void eulerCycle(int **matrixCopy, vector<int> &ans, int currentVertex);
 
+    bool isEuler();
+
 public:
 
     explicit MatrixGraph(int vertexCount);

@@ -42,6 +42,8 @@ public:
 
     void printMatrix();
 
+    void printEdges();
+
     int getVertexCount() const;
 
     vector<int> getEulerCycle();

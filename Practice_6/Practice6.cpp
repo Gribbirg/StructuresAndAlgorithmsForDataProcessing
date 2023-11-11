@@ -10,6 +10,7 @@ void Practice6::start() {
 
     unsigned int enter;
     vector<int> ans;
+    MatrixGraph *matrixAns;
 
     auto graph = createGraph();
     cout << endl;
@@ -22,7 +23,7 @@ void Practice6::start() {
          << "4 - print matrix of graph;" << endl
          << "5 - insert edges;" << endl
          << "6 - get Euler cycle;" << endl
-         << "6 - get Prim tree." << endl
+         << "7 - get Prim tree." << endl
          << endl;
 
     while (true) {
@@ -40,11 +41,12 @@ void Practice6::start() {
                 cout << "Information about operations numbers:" << endl
                      << "0 - exit;" << endl
                      << "1 - print information;" << endl
-                     << "2 - create new tree;" << endl
-                     << "3 - print tree;" << endl
-                     << "4 - get value of most left node;" << endl
-                     << "5 - get path length to node with searched value;" << endl
-                     << "6 - get biggest value of leaf." << endl;
+                     << "2 - create new graph;" << endl
+                     << "3 - print graph;" << endl
+                     << "4 - print matrix of graph;" << endl
+                     << "5 - insert edges;" << endl
+                     << "6 - get Euler cycle;" << endl
+                     << "7 - get Prim tree." << endl;
                 break;
 
             case 2:
@@ -81,7 +83,12 @@ void Practice6::start() {
 
             case 7:
                 cout << "Prim tree:" << endl;
-                graph->getPrimTree()->print();
+                matrixAns = graph->getPrimTree();
+
+                cout << "Graph:" << endl;
+                matrixAns->print();
+                cout << "Edges:" << endl;
+                matrixAns->printEdges();
                 break;
             default:
                 cout << "Error. Try again!" << endl;

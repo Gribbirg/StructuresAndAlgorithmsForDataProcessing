@@ -236,7 +236,7 @@ void MatrixGraph::printEdges() {
     for (int i = 0; i < vertexCount; i++) {
         for (int j = i; j < vertexCount; j++) {
             if (matrix[i][j] != 0) {
-                cout << i << " - " << j << ": " << matrix[i][j] << endl;
+                cout << i + 1 << " - " << j + 1 << ": " << matrix[i][j] << endl;
             }
         }
     }

@@ -45,6 +45,8 @@ public:
     int getVertexCount() const;
 
     vector<int> getEulerCycle();
+
+    MatrixGraph *getPrimTree();
 };
 
 

@@ -175,14 +175,58 @@ bool MatrixGraph::isEuler() {
             if (matrix[i][j] != 0)
                 count++;
         }
-        if (count % 2 != 0)
-            oddCount++;
-        else if (count == 0)
+        if (count % 2 != 0 || count == 0)
             return false;
     }
-    if (oddCount > 2) return false;
-
-
-
     return true;
+}
+
+MatrixGraph *MatrixGraph::getPrimTree() {
+
+    auto ans = new MatrixGraph(vertexCount);
+    bool selected[vertexCount];
+    for (int i = 0; i < vertexCount; i++) selected[i] = false;
+
+    int min = INT_MAX;
+    int startMin;
+    int endMin;
+    for (int i = 0; i < vertexCount; i++) {
+        for (int j = i; j < vertexCount; j++) {
+            if (matrix[i][j] != 0 && matrix[i][j] < min) {
+                min = matrix[i][j];
+                startMin = i;
+                endMin = j;
+            }
+        }
+    }
+    if (min == INT_MAX) return ans;
+
+    selected[startMin] = selected[endMin] = true;
+    ans->insertEdge(startMin, endMin, min);
+
+
+    for (int edgeNum = 2; edgeNum < vertexCount; edgeNum++) {
+        min = INT_MAX;
+        for (int i = 0; i < vertexCount; i++) {
+            if (selected[i]) {
+                for (int j = 0; j < vertexCount; j++) {
+                    if (!selected[j] && matrix[i][j] != 0 && matrix[i][j] < min) {
+                        min = matrix[i][j];
+                        startMin = i;
+                        endMin = j;
+                    }
+                }
+            }
+        }
+        if (min != INT_MAX) {
+            ans->insertEdge(startMin, endMin, min);
+            selected[endMin] = true;
+        }
+        else {
+            delete ans;
+            return new MatrixGraph(vertexCount);
+        }
+    }
+
+    return ans;
 }

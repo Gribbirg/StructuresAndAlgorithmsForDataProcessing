@@ -21,7 +21,8 @@ void Practice6::start() {
          << "3 - print graph;" << endl
          << "4 - print matrix of graph;" << endl
          << "5 - insert edges;" << endl
-         << "6 - get Euler cycle." << endl
+         << "6 - get Euler cycle;" << endl
+         << "6 - get Prim tree." << endl
          << endl;
 
     while (true) {
@@ -76,6 +77,11 @@ void Practice6::start() {
                         cout << ' ' << ans[i] + 1;
                     cout << endl;
                 }
+                break;
+
+            case 7:
+                cout << "Prim tree:" << endl;
+                graph->getPrimTree()->print();
                 break;
             default:
                 cout << "Error. Try again!" << endl;

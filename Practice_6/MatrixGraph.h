@@ -29,6 +29,8 @@ private:
 
     bool isEuler();
 
+    void printLikeTree(int **matrixCopy, const std::string &prefix, int vertex, int edgeWeight, bool isLast);
+
 public:
 
     explicit MatrixGraph(int vertexCount);
@@ -48,6 +50,8 @@ public:
     vector<int> getEulerCycle();
 
     MatrixGraph *getPrimTree();
+
+    void printLikeTree();
 };
 
 

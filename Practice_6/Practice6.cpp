@@ -89,6 +89,8 @@ void Practice6::start() {
                 matrixAns->print();
                 cout << "Edges:" << endl;
                 matrixAns->printEdges();
+                cout << "Tree:" << endl;
+                matrixAns->printLikeTree();
                 break;
             default:
                 cout << "Error. Try again!" << endl;

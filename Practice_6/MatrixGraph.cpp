@@ -218,8 +218,7 @@ MatrixGraph *MatrixGraph::getPrimTree() {
         if (min != INT_MAX) {
             ans->insertEdge(startMin, endMin, min);
             selected[endMin] = true;
-        }
-        else {
+        } else {
             delete ans;
             return new MatrixGraph(vertexCount);
         }
@@ -237,4 +236,45 @@ void MatrixGraph::printEdges() {
             }
         }
     }
+}
+
+void MatrixGraph::printLikeTree(int **matrixCopy, const string &prefix, int vertex, int edgeWeight, bool isLast) {
+    cout << prefix;
+
+    cout << (isLast ? "└───" : "├───");
+
+    cout << vertex + 1 << (edgeWeight != 0 ? " (" + to_string(edgeWeight) + ")" : "") << endl;
+
+    int weight;
+    int prevI = -1;
+    for (int i = 0; i < vertexCount; i++) {
+        if (matrixCopy[vertex][i] != 0) {
+            if (prevI != -1) {
+                weight = matrixCopy[vertex][prevI];
+                matrixCopy[prevI][vertex] = matrixCopy[vertex][prevI] = 0;
+                printLikeTree(matrixCopy, prefix + (isLast ? "    " : "│   "), prevI, weight, false);
+            }
+            prevI = i;
+        }
+    }
+    if (prevI != -1) {
+        weight = matrixCopy[vertex][prevI];
+        matrixCopy[prevI][vertex] = matrixCopy[vertex][prevI] = 0;
+        printLikeTree(matrixCopy, prefix + (isLast ? "    " : "│   "), prevI, weight, true);
+    }
+}
+
+void MatrixGraph::printLikeTree() {
+    int **matrixCopy = new int *[vertexCount];
+    for (int i = 0; i < vertexCount; i++) {
+        matrixCopy[i] = new int[vertexCount];
+        for (int j = 0; j < vertexCount; j++)
+            matrixCopy[i][j] = matrix[i][j];
+    }
+
+    printLikeTree(matrixCopy, "", 0, 0, true);
+
+    for (int i = 0; i < vertexCount; i++)
+        delete[] matrixCopy[i];
+    delete[] matrixCopy;
 }

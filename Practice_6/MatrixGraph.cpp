@@ -7,7 +7,6 @@
 #include "MatrixGraph.h"
 
 MatrixGraph::MatrixGraph(int vertexCount) : vertexCount(vertexCount) {
-    edgeCount = 0;
     matrix = new int *[vertexCount];
     for (int i = 0; i < vertexCount; i++) {
         matrix[i] = new int[vertexCount];
@@ -17,8 +16,6 @@ MatrixGraph::MatrixGraph(int vertexCount) : vertexCount(vertexCount) {
 }
 
 void MatrixGraph::insertEdge(int from, int to, int weight) {
-    if (matrix[from][to] == 0)
-        edgeCount++;
     matrix[from][to] = weight;
     matrix[to][from] = weight;
 }
@@ -232,7 +229,7 @@ MatrixGraph *MatrixGraph::getPrimTree() {
 }
 
 void MatrixGraph::printEdges() {
-    if (edgeCount == 0) return;
+    cout << "Edge: weight" << endl;
     for (int i = 0; i < vertexCount; i++) {
         for (int j = i; j < vertexCount; j++) {
             if (matrix[i][j] != 0) {

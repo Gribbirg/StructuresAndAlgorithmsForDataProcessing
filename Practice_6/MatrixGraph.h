@@ -15,7 +15,6 @@ class MatrixGraph {
 private:
 
     int **matrix;
-    int edgeCount;
     int vertexCount;
 
     int getMaxWeight();

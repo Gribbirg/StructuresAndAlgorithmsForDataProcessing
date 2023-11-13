@@ -31,6 +31,10 @@ private:
 
     void printLikeTree(int **matrixCopy, const std::string &prefix, int vertex, int edgeWeight, bool isLast);
 
+    int **createCopyMatrix();
+
+    static void delMatrix(int **matrix, int size);
+
 public:
 
     explicit MatrixGraph(int vertexCount);
@@ -52,6 +56,8 @@ public:
     MatrixGraph *getPrimTree();
 
     void printLikeTree();
+
+    int getEdgesCount();
 };
 
 

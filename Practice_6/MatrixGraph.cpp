@@ -119,9 +119,7 @@ void MatrixGraph::printMatrix() {
 }
 
 MatrixGraph::~MatrixGraph() {
-    for (int i = 0; i < vertexCount; i++)
-        delete[] matrix[i];
-    delete[] matrix;
+    delMatrix(matrix, vertexCount);
 }
 
 vector<int> MatrixGraph::getEulerCycle() {
@@ -129,19 +127,12 @@ vector<int> MatrixGraph::getEulerCycle() {
     if (!isEuler())
         return {};
 
-    int **matrixCopy = new int *[vertexCount];
-    for (int i = 0; i < vertexCount; i++) {
-        matrixCopy[i] = new int[vertexCount];
-        for (int j = 0; j < vertexCount; j++)
-            matrixCopy[i][j] = matrix[i][j];
-    }
+    int **matrixCopy = createCopyMatrix();
 
     vector<int> ans;
     eulerCycle(matrixCopy, ans, 0);
 
-    for (int i = 0; i < vertexCount; i++)
-        delete[] matrixCopy[i];
-    delete[] matrixCopy;
+    delMatrix(matrixCopy, vertexCount);
 
     for (int i = 0; i < vertexCount; i++) {
         if (find(ans.begin(), ans.end(), i) == ans.end()) {
@@ -265,16 +256,32 @@ void MatrixGraph::printLikeTree(int **matrixCopy, const string &prefix, int vert
 }
 
 void MatrixGraph::printLikeTree() {
+    int **matrixCopy = createCopyMatrix();
+    printLikeTree(matrixCopy, "", 0, 0, true);
+    delMatrix(matrixCopy, vertexCount);
+}
+
+int **MatrixGraph::createCopyMatrix() {
     int **matrixCopy = new int *[vertexCount];
     for (int i = 0; i < vertexCount; i++) {
         matrixCopy[i] = new int[vertexCount];
         for (int j = 0; j < vertexCount; j++)
             matrixCopy[i][j] = matrix[i][j];
     }
+    return matrixCopy;
+}
 
-    printLikeTree(matrixCopy, "", 0, 0, true);
+void MatrixGraph::delMatrix(int **matrix, int size) {
+    for (int i = 0; i < size; i++)
+        delete[] matrix[i];
+    delete[] matrix;
+}
 
+int MatrixGraph::getEdgesCount() {
+    int count = 0;
     for (int i = 0; i < vertexCount; i++)
-        delete[] matrixCopy[i];
-    delete[] matrixCopy;
+        for (int j = i; j < vertexCount; j++)
+            if (matrix[i][j] != 0)
+                count++;
+    return count;
 }

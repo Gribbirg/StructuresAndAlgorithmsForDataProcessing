@@ -10,7 +10,7 @@ void Practice6::start() {
 
     unsigned int enter;
     vector<int> ans;
-    MatrixGraph *matrixAns;
+    MatrixGraph *graphAns;
 
     auto graph = createGraph();
     cout << endl;
@@ -83,14 +83,18 @@ void Practice6::start() {
 
             case 7:
                 cout << "Prim tree:" << endl;
-                matrixAns = graph->getPrimTree();
+                graphAns = graph->getPrimTree();
 
-                cout << "Graph:" << endl;
-                matrixAns->print();
-                cout << "Edges:" << endl;
-                matrixAns->printEdges();
-                cout << "Tree:" << endl;
-                matrixAns->printLikeTree();
+                if (graphAns->getEdgesCount() != 0) {
+                    cout << "Graph:" << endl;
+                    graphAns->print();
+                    cout << "Edges:" << endl;
+                    graphAns->printEdges();
+                    cout << "Tree:" << endl;
+                    graphAns->printLikeTree();
+                } else {
+                    cout << "No one!" << endl;
+                }
                 break;
             default:
                 cout << "Error. Try again!" << endl;
@@ -130,7 +134,7 @@ void Practice6::insertEdges(MatrixGraph *graph) {
                 start = rand() % graph->getVertexCount();
                 end = rand() % graph->getVertexCount();
             } while (start == end);
-            graph->insertEdge(start, end, rand() % 100);
+            graph->insertEdge(start, end, rand() % 98 + 1);
         }
     } else {
         int weight;

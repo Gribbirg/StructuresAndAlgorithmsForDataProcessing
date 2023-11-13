@@ -82,7 +82,7 @@ int MatrixGraph::getLenOfNumber(int num) {
 
 bool MatrixGraph::checkForEmpty(string line, int start, int end) {
     for (int i = start; i < end + 1; i++) {
-        if (line[i] != ' ') return false;
+        if (!(line[i] == ' ' || line[i] == '|')) return false;
     }
     return true;
 }

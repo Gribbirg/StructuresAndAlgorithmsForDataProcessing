@@ -13,8 +13,10 @@ using namespace std;
 
 class Practice7 {
 private:
-    static unsigned int bruteForceMethod(const string& text);
-    static bool check(const string& text);
+    unsigned int bruteForceMethod(const string& text);
+    bool check(const string& text);
+    unsigned long long int counter;
+    explicit Practice7(unsigned long long int counter);
 public:
     static void start();
 };

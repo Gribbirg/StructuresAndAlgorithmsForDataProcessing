@@ -19,6 +19,7 @@ private:
     bool check(const string& text);
     unsigned long long int counter;
     explicit Practice7(unsigned long long int counter);
+    static string getLine();
 public:
     static void start();
 };

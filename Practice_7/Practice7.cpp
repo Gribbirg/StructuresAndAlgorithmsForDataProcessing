@@ -3,14 +3,112 @@
 //
 
 #include <algorithm>
+#include <chrono>
 #include "Practice7.h"
 
 void Practice7::start() {
+    cout << "Practice 7" << endl;
+    cout << endl;
+
     int enter;
     string text;
     Practice7 object(0L);
+    auto startTime = chrono::steady_clock::now();
+    auto endTime = chrono::steady_clock::now();
+    unsigned int ans;
 
+    cout << "Information about operations numbers:" << endl
+         << "0 - exit;" << endl
+         << "1 - print information;" << endl
+         << "2 - brute force method;" << endl
+         << "3 - dynamic programming method;" << endl
+         << "4 - comparison." << endl
+         << endl;
 
+    while (true) {
+        cout << "Enter operation number or 0 for exit: ";
+        cin >> enter;
+
+        switch (enter) {
+
+            case 0:
+                cout << "Exit from practice 7" << endl;
+                return;
+
+            case 1:
+                cout << "Information about operations numbers:" << endl
+                     << "0 - exit;" << endl
+                     << "1 - print information;" << endl
+                     << "2 - brute force method;" << endl
+                     << "3 - dynamic programming method;" << endl
+                     << "4 - comparison." << endl;
+                break;
+
+            case 2:
+                text = getLine();
+
+                cout << "Brute force method:" << endl;
+                object.counter = 0;
+                startTime = chrono::steady_clock::now();
+                ans = object.bruteForceMethod(text);
+                endTime = chrono::steady_clock::now();
+                cout << "Maximum palindrome length: " << ans << endl;
+                cout << "Number of comparisons: " << object.counter << endl;
+                cout << "Time: " << chrono::duration<double, milli>(endTime - startTime).count() << " milliseconds"
+                     << endl;
+                break;
+
+            case 3:
+                text = getLine();
+
+                cout << "Dynamic programming method:" << endl;
+                object.counter = 0;
+                startTime = chrono::steady_clock::now();
+                ans = object.dynamicProgrammingMethod(text);
+                endTime = chrono::steady_clock::now();
+                cout << "Maximum palindrome length: " << ans << endl;
+                cout << "Number of comparisons: " << object.counter << endl;
+                cout << "Time: " << chrono::duration<double, milli>(endTime - startTime).count() << " milliseconds"
+                     << endl;
+                break;
+
+            case 4:
+                text = getLine();
+                cout << endl;
+
+                cout << "Brute force method:" << endl;
+                object.counter = 0;
+                startTime = chrono::steady_clock::now();
+                ans = object.bruteForceMethod(text);
+                endTime = chrono::steady_clock::now();
+                cout << "Maximum palindrome length: " << ans << endl;
+                cout << "Number of comparisons: " << object.counter << endl;
+                cout << "Time: " << chrono::duration<double, milli>(endTime - startTime).count() << " milliseconds"
+                     << endl;
+
+                cout << endl;
+
+                cout << "Dynamic programming method:" << endl;
+                object.counter = 0;
+                startTime = chrono::steady_clock::now();
+                ans = object.dynamicProgrammingMethod(text);
+                endTime = chrono::steady_clock::now();
+                cout << "Maximum palindrome length: " << ans << endl;
+                cout << "Number of comparisons: " << object.counter << endl;
+                cout << "Time: " << chrono::duration<double, milli>(endTime - startTime).count() << " milliseconds"
+                     << endl;
+                break;
+
+            default:
+                cout << "Error. Try again!" << endl;
+        }
+        cout << endl;
+    }
+
+}
+
+string Practice7::getLine() {
+    string text;
     cout << "Enter line or \"file\" to import from file: ";
     cin >> text;
     if (text == "file") {
@@ -19,18 +117,10 @@ void Practice7::start() {
         fstream1 >> text;
         fstream1.close();
     }
-
-
-//    cout << object.bruteForceMethod(text) << endl;
-//    cout << object.counter << endl;
-//    cout << endl;
-//    object.counter = 0;
-    cout << object.dynamicProgrammingMethod(text) << endl;
-    cout << object.counter << endl;
-
+    return text;
 }
 
-unsigned int Practice7::bruteForceMethod(const string& text) {
+unsigned int Practice7::bruteForceMethod(const string &text) {
     if (check(text)) return text.length();
     string str;
 //    cout << counter << endl;
@@ -66,7 +156,7 @@ unsigned int Practice7::dynamicProgrammingMethod(const string &text) {
         matrix[i][i] = 1;
         matrix[i][i + 1] = 0;
     }
-    auto ans = (unsigned int) dynamicProgrammingFind(text, matrix, (int)text.length() - 1, 0);
+    auto ans = (unsigned int) dynamicProgrammingFind(text, matrix, (int) text.length() - 1, 0);
     for (int i = 0; i < text.length(); i++)
         delete[] matrix[i];
     delete[] matrix;
@@ -79,7 +169,8 @@ int Practice7::dynamicProgrammingFind(const string &text, int **matrix, int left
         if (text[left] == text[right])
             matrix[left][right] = dynamicProgrammingFind(text, matrix, left - 1, right + 1) + 2;
         else
-            matrix[left][right] = max(dynamicProgrammingFind(text, matrix, left, right + 1), dynamicProgrammingFind(text, matrix, left - 1, right));
+            matrix[left][right] = max(dynamicProgrammingFind(text, matrix, left, right + 1),
+                                      dynamicProgrammingFind(text, matrix, left - 1, right));
     }
     return matrix[left][right];
 }

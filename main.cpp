@@ -5,6 +5,7 @@
 #include "Practice_4/Practice4.h"
 #include "Practice_5/Practice5.h"
 #include "Practice_6/Practice6.h"
+#include "Practice_7/Practice7.h"
 
 using namespace std;
 
@@ -19,5 +20,6 @@ int main() {
 //    Practice3::start();
 //    Practice4::start();
 //    Practice5::start();
-    Practice6::start();
+//    Practice6::start();
+    Practice7::start();
 }

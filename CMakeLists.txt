@@ -59,4 +59,6 @@ add_executable(StructuresAndAlgorithmsForDataProcessing main.cpp
         Practice_6/Practice6.h
         Practice_6/MatrixGraph.cpp
         Practice_6/MatrixGraph.h
+        Practice_7/Practice7.cpp
+        Practice_7/Practice7.h
 )

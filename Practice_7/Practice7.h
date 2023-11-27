@@ -14,6 +14,8 @@ using namespace std;
 class Practice7 {
 private:
     unsigned int bruteForceMethod(const string& text);
+    unsigned int dynamicProgrammingMethod(const string& text);
+    int dynamicProgrammingFind(const string& text, int **matrix, int left, int right);
     bool check(const string& text);
     unsigned long long int counter;
     explicit Practice7(unsigned long long int counter);

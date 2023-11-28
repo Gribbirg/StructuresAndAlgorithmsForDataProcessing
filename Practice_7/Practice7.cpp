@@ -163,14 +163,14 @@ unsigned int Practice7::dynamicProgrammingMethod(const string &text) {
     return ans;
 }
 
-int Practice7::dynamicProgrammingFind(const string &text, int **matrix, int left, int right) {
-    if (matrix[left][right] == -1) {
+int Practice7::dynamicProgrammingFind(const string &text, int **matrix, int i, int j) {
+    if (matrix[i][j] == -1) {
         counter++;
-        if (text[left] == text[right])
-            matrix[left][right] = dynamicProgrammingFind(text, matrix, left - 1, right + 1) + 2;
+        if (text[i] == text[j])
+            matrix[i][j] = dynamicProgrammingFind(text, matrix, i - 1, j + 1) + 2;
         else
-            matrix[left][right] = max(dynamicProgrammingFind(text, matrix, left, right + 1),
-                                      dynamicProgrammingFind(text, matrix, left - 1, right));
+            matrix[i][j] = max(dynamicProgrammingFind(text, matrix, i, j + 1),
+                               dynamicProgrammingFind(text, matrix, i - 1, j));
     }
-    return matrix[left][right];
+    return matrix[i][j];
 }

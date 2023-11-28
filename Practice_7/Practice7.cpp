@@ -123,8 +123,6 @@ string Practice7::getLine() {
 unsigned int Practice7::bruteForceMethod(const string &text) {
     if (check(text)) return text.length();
     string str;
-//    cout << counter << endl;
-//    cout << text << endl;
     unsigned int maxLen = 0;
     for (int i = 0; i < text.length(); i++) {
         str = text;
@@ -135,7 +133,6 @@ unsigned int Practice7::bruteForceMethod(const string &text) {
 }
 
 bool Practice7::check(const string &text) {
-//    if (text.length() == 1) return true;
     for (int i = 0; i < text.length() / 2; i++) {
         counter++;
         if (text[i] != text[text.length() - 1 - i])
